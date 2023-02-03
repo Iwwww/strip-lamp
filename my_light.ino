@@ -1,5 +1,7 @@
 #include <FastLED.h>
+#include <EncButton2.h>
 
+/* === SETUP === */
 #define NUM_LEDS 70
 #define DATA_PIN 4
 
@@ -7,14 +9,24 @@
 #define ENC_S1 2
 #define ENC_S2 3
 
-#include <EncButton2.h>
+/* === SETTINGS === */
+#define BRIGHTNESS_SMALL_STEP 10
+#define BRIGHTNESS_BIG_STEP 50
+#define COLOR_SMALL_STEP 1
+#define COLOR_BIG_STEP 5
+
+#define MAX_BRIGHTNESS 255
+#define MIN_BRIGHTNESS 5
+
+#define STARTUP_COLOR_TEMPERATURE 25      // color temperature on startup
+
 EncButton2<EB_BTN> enc(INPUT, 12);
 
 // encoder reads with table
 long enc_pre_pos = 0;
 long enc_prev_pre_pos = enc_pre_pos;
-long enc_pos = 0;                     // current encoder position
-long enc_prev_pos = enc_pos;          // privious encoder position
+long enc_pos = 0;                         // current encoder position
+long enc_prev_pos = enc_pos;              // privious encoder position
 byte lastState = 0;
 bool enc_btn_pressed = 0;
 const int8_t increment[16] = {0, -1, 1, 0, 1, 0, 0, -1, -1, 0, 0, 1, 0, 1, -1, 0};
@@ -22,14 +34,12 @@ const int8_t increment[16] = {0, -1, 1, 0, 1, 0, 0, -1, -1, 0, 0, 1, 0, 1, -1, 0
 short n = 0;
 bool btn_state = 0;
 
-#define MAX_BRIGHTNESS 255
-#define MIN_BRIGHTNESS 5
-#define BRIGHTNESS_STEP 10
-CRGB leds[NUM_LEDS];
+int brightness_step = BRIGHTNESS_SMALL_STEP;
 int brightness = MAX_BRIGHTNESS;
+CRGB leds[NUM_LEDS];
 
-#define COLOR_TEMPERATURE_STEP 1
-int current_temperature = 0;
+int8_t color_step = COLOR_SMALL_STEP;
+int current_temperature = STARTUP_COLOR_TEMPERATURE;
 #include "color_temperatures.h"
 
 #define COLOR_COUNT 5
@@ -53,10 +63,12 @@ void loop() {
   enc_tick();
   enc.tick();
 
+  if (enc.click()) set_step(enc.hasClicks());
+
   if (enc.press()) enc_btn_pressed = true;
   else if (enc.release()) enc_btn_pressed = false;
 
-  if (!enc_btn_pressed) {
+  if (enc_btn_pressed) {
     if (enc_rot_right()) brightness_up();
     if (enc_rot_left()) brightness_down();
   } else {
@@ -112,8 +124,10 @@ void set_color_temperature(uint8_t color[3]) {
 }
 
 void color_temperature_next() {
-  if (current_temperature < COLOR_TEMPERATURE_COUNT) {
-    current_temperature += COLOR_TEMPERATURE_STEP;
+  if (current_temperature + color_step < COLOR_TEMPERATURE_COUNT) {
+    current_temperature += color_step;
+  } else if (current_temperature + color_step >= COLOR_TEMPERATURE_COUNT) {
+    current_temperature = COLOR_TEMPERATURE_COUNT;
   }
   set_color_temperature(ColorTemperatures[current_temperature]);
   Serial.println();
@@ -122,8 +136,10 @@ void color_temperature_next() {
 }
 
 void color_temperature_prev() {
-  if (current_temperature > 0) {
-    current_temperature -= COLOR_TEMPERATURE_STEP;
+  if (current_temperature - color_step > 0) {
+    current_temperature -= color_step;
+  } else if (current_temperature - color_step <= 0) {
+    current_temperature = 0;
   }
   set_color_temperature(ColorTemperatures[current_temperature]);
   Serial.println();
@@ -134,8 +150,8 @@ void color_temperature_prev() {
 // Brightness
 void brightness_up() {
   if (brightness < MAX_BRIGHTNESS)
-    if (brightness + BRIGHTNESS_STEP <= MAX_BRIGHTNESS) {
-      brightness += BRIGHTNESS_STEP;
+    if (brightness + brightness_step <= MAX_BRIGHTNESS) {
+      brightness += brightness_step;
     } else {
       brightness = MAX_BRIGHTNESS;
     }
@@ -148,8 +164,8 @@ void brightness_up() {
 
 void brightness_down() {
   if (brightness > MIN_BRIGHTNESS)
-    if (brightness - BRIGHTNESS_STEP >= MIN_BRIGHTNESS) {
-        brightness -= BRIGHTNESS_STEP;
+    if (brightness - brightness_step >= MIN_BRIGHTNESS) {
+        brightness -= brightness_step;
     } else {
       brightness = MIN_BRIGHTNESS;
     }
@@ -179,3 +195,10 @@ void color_prev() {
   fill_led_strip(Colors[current_color]);
 }
 
+void set_step(int8_t factor) {
+  if (color_step == COLOR_SMALL_STEP) color_step = COLOR_BIG_STEP;
+  else color_step = COLOR_SMALL_STEP;
+
+  if (brightness_step == BRIGHTNESS_SMALL_STEP) brightness_step = BRIGHTNESS_BIG_STEP;
+  else brightness_step = BRIGHTNESS_SMALL_STEP;
+}
