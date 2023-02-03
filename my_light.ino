@@ -53,7 +53,6 @@ int Colors[][3] {
 };
 
 void setup() {
-  Serial.begin(9600);
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);  // GRB ordering is assumed
   set_color_temperature(ColorTemperatures[current_temperature]);
   FastLED.show();
@@ -86,7 +85,6 @@ void enc_tick() {
   if (state != lastState) {
     enc_pre_pos += increment[state | (lastState << 2)];
     lastState = state;
-   // Serial.println(enc_pos); 
   }
 
   enc_prev_pre_pos = enc_pre_pos;
@@ -130,9 +128,6 @@ void color_temperature_next() {
     current_temperature = COLOR_TEMPERATURE_COUNT;
   }
   set_color_temperature(ColorTemperatures[current_temperature]);
-  Serial.println();
-  Serial.print("bnt1 press\t current temp=");
-  // Serial.println(ColorTemperatures[current_temperature]);
 }
 
 void color_temperature_prev() {
@@ -142,9 +137,6 @@ void color_temperature_prev() {
     current_temperature = 0;
   }
   set_color_temperature(ColorTemperatures[current_temperature]);
-  Serial.println();
-  Serial.print("bnt1 press\t current temp=");
-  // Serial.println(ColorTemperatures[current_temperature]);
 }
 
 // Brightness
@@ -157,9 +149,6 @@ void brightness_up() {
     }
   FastLED.setBrightness(brightness);
   
-  // Serial.println();
-  Serial.print("set brightness=");
-  Serial.println(brightness);
 }
 
 void brightness_down() {
@@ -171,9 +160,6 @@ void brightness_down() {
     }
   FastLED.setBrightness(brightness);
 
-  // Serial.println();
-  Serial.print("set brightness=");
-  Serial.println(brightness);
 }
 
 // Colors
