@@ -28,7 +28,6 @@ bool btn_state = 0;
 CRGB leds[NUM_LEDS];
 int brightness = MAX_BRIGHTNESS;
 
-#define COLOR_TEMPERATURE_COUNT 130
 #define COLOR_TEMPERATURE_STEP 1
 int current_temperature = 0;
 #include "color_temperatures.h"

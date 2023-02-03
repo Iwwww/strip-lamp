@@ -1,6 +1,7 @@
 #ifndef COLOR_TEMPERATURES
 #define COLOR_TEMPERATURES
 
+#define COLOR_TEMPERATURE_COUNT 315
 uint8_t ColorTemperatures[][3] {
   {255,  51,   0},
   {255,  56,   0},
