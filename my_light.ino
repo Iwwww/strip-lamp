@@ -28,20 +28,10 @@ bool btn_state = 0;
 CRGB leds[NUM_LEDS];
 int brightness = MAX_BRIGHTNESS;
 
-#define COLOR_TEMPERATURE_COUNT 8
+#define COLOR_TEMPERATURE_COUNT 130
 #define COLOR_TEMPERATURE_STEP 1
 int current_temperature = 0;
-int ColorTemperatures[] {
-    Candle,
-    Tungsten40W,
-    Tungsten100W,
-    Halogen,
-    CarbonArc,
-    HighNoonSun,
-    DirectSunlight,
-    OvercastSky,
-    ClearBlueSky,
-};
+#include "color_temperatures.h"
 
 #define COLOR_COUNT 5
 int current_color = 0;
@@ -56,7 +46,7 @@ int Colors[][3] {
 void setup() {
   Serial.begin(9600);
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);  // GRB ordering is assumed
-  set_color_temperature(Candle);
+  set_color_temperature(ColorTemperatures[current_temperature]);
   FastLED.show();
 }
 
@@ -116,10 +106,9 @@ void fill_led_strip(int tmp[3]) {
 }
 
 // Color temperatur
-void set_color_temperature(int color) {
-  FastLED.setTemperature( color ); // first temperature
-  for (int i = 0; i < NUM_LEDS; i++) {
-    leds[i] = color; // show indicator pixel
+void set_color_temperature(uint8_t color[3]) {
+  for (uint8_t i = 0; i < NUM_LEDS; i++) {
+    leds[i].setRGB(color[0], color[1], color[2]);
   }
 }
 
