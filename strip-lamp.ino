@@ -67,7 +67,7 @@ void loop() {
   if (enc.press()) enc_btn_pressed = true;
   else if (enc.release()) enc_btn_pressed = false;
 
-  if (enc_btn_pressed) {
+  if (!enc_btn_pressed) {
     if (enc_rot_right()) brightness_up();
     if (enc_rot_left()) brightness_down();
   } else {
