@@ -1,6 +1,6 @@
 # Stri Lamp
 
-Adjust brightness and color temperature
+Сontrol the color temperature and brightness of your lamp through the encoder
 
 # Libraries
 - [FastLED](https://github.com/FastLED/FastLED)
