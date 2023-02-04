@@ -20,6 +20,7 @@
 
 #define STARTUP_COLOR_TEMPERATURE 25      // color temperature on startup
 
+
 EncButton2<EB_BTN> enc(INPUT, 12);
 
 // encoder reads with table
@@ -41,16 +42,6 @@ CRGB leds[NUM_LEDS];
 int8_t color_step = COLOR_SMALL_STEP;
 int current_temperature = STARTUP_COLOR_TEMPERATURE;
 #include "color_temperatures.h"
-
-#define COLOR_COUNT 5
-int current_color = 0;
-int Colors[][3] {
-    {255, 0, 0},
-    {0, 255, 0},
-    {0, 0, 255},
-    {106, 0, 255},  // blue purple
-    {255, 0, 128},  // red purple
-};
 
 void setup() {
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);  // GRB ordering is assumed
@@ -160,25 +151,6 @@ void brightness_down() {
     }
   FastLED.setBrightness(brightness);
 
-}
-
-// Colors
-void color_next() {
-  if (current_color < COLOR_COUNT) {
-    current_color++;
-  } else if (current_color == COLOR_COUNT) {
-    current_color = 0;
-  }
-  fill_led_strip(Colors[current_color]);
-}
-
-void color_prev() {
-  if (current_color > 0) {
-    current_color--;
-  } else if (current_color == 0) {
-    current_color = COLOR_COUNT;
-  }
-  fill_led_strip(Colors[current_color]);
 }
 
 void set_step(int8_t factor) {
