@@ -5,7 +5,7 @@
 #define NUM_LEDS 70
 #define DATA_PIN 4
 
-#define ENC_KEY 12
+#define ENC_KEY 12                      // encoder button
 #define ENC_S1 2
 #define ENC_S2 3
 
