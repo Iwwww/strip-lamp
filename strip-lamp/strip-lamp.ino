@@ -5,20 +5,25 @@
 #define NUM_LEDS 70
 #define DATA_PIN 4
 
-#define ENC_KEY 12                      // encoder button
+#define ENC_KEY 12                        // encoder button
 #define ENC_S1 2
 #define ENC_S2 3
 
 /* === SETTINGS === */
-#define BRIGHTNESS_SMALL_STEP 10
-#define BRIGHTNESS_BIG_STEP 50
+// color temperature
 #define COLOR_SMALL_STEP 1
 #define COLOR_BIG_STEP 5
+#define STARTUP_COLOR_TEMPERATURE 25      // color temperature on startup
 
+// brightness
+#define BRIGHTNESS_SMALL_STEP 10
+#define BRIGHTNESS_BIG_STEP 50
 #define MAX_BRIGHTNESS 255
 #define MIN_BRIGHTNESS 5
 
-#define STARTUP_COLOR_TEMPERATURE 25      // color temperature on startup
+// sleep timer
+#define SLEEP_MODE_FADE_DELAY 60000        // in milli seconds
+#define BRIGHTNESS_FADE_OUT_STEP 1000      // in milli seconds
 
 
 EncButton2<EB_BTN> enc(INPUT, 12);
@@ -43,6 +48,13 @@ int8_t color_step = COLOR_SMALL_STEP;
 int current_temperature = STARTUP_COLOR_TEMPERATURE;
 #include "color_temperatures.h"
 
+// sleep mode
+bool sleepModeOn = 0;
+int fade_out_brightness = brightness;
+// timer
+long sleep_time = 0;
+long fade_time = 0;
+
 void setup() {
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);  // GRB ordering is assumed
   set_color_temperature(ColorTemperatures[current_temperature]);
@@ -66,7 +78,31 @@ void loop() {
     if (enc_rot_left()) color_temperature_next();
   }
 
+  // sleep timer
+  if (enc.hasClicks(2) && sleepModeOn == false) {
+    sleep_time = millis();
+    fade_time = sleep_time;
+    sleepModeOn = true;
+    fade_out_brightness = brightness;
+  }
+  if (sleepModeOn) {
+    // check timer
+    if (millis() - sleep_time >= SLEEP_MODE_FADE_DELAY)
+      if (millis() - fade_time >= BRIGHTNESS_FADE_OUT_STEP) {
+        if (fade_out_brightness > 0)
+          FastLED.setBrightness(--fade_out_brightness);
+        fade_time = millis();
+      }
+    // exit sleep mode
+    if (enc.click() || enc_rot_right() || enc_rot_left()) {
+      sleepModeOn = false;
+      FastLED.setBrightness(brightness);
+      set_color_temperature(ColorTemperatures[current_temperature]);
+    }
+  }
+
   FastLED.show();
+
 }
 
 // Encoder
