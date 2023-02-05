@@ -22,9 +22,12 @@
 #define MIN_BRIGHTNESS 5
 
 // sleep timer
-#define SLEEP_MODE_FADE_DELAY 60000        // in milli seconds
-#define BRIGHTNESS_FADE_OUT_STEP 1000      // in milli seconds
+#define SLEEP_MODE_FADE_DELAY 6000       // in milli seconds
+#define BRIGHTNESS_FADE_OUT_STEP 1000     // in milli seconds
 
+// effects
+#define BLINK_BRIGHTNESS_LOWERING 100
+#define BLINK_DELAY 500
 
 EncButton2<EB_BTN> enc(INPUT, 12);
 
@@ -84,6 +87,7 @@ void loop() {
     fade_time = sleep_time;
     sleepModeOn = true;
     fade_out_brightness = brightness;
+    blink();
   }
   if (sleepModeOn) {
     // check timer
@@ -195,4 +199,18 @@ void set_step(int8_t factor) {
 
   if (brightness_step == BRIGHTNESS_SMALL_STEP) brightness_step = BRIGHTNESS_BIG_STEP;
   else brightness_step = BRIGHTNESS_SMALL_STEP;
+}
+
+void blink() {
+  if (brightness - 15 > MIN_BRIGHTNESS) {
+    FastLED.setBrightness(brightness - BLINK_BRIGHTNESS_LOWERING);
+    FastLED.show();
+    delay(BLINK_DELAY);
+    FastLED.setBrightness(brightness);
+  } else {
+    FastLED.setBrightness(brightness + BLINK_BRIGHTNESS_LOWERING / 2);
+    FastLED.show();
+    delay(BLINK_DELAY);
+    FastLED.setBrightness(brightness);
+  }
 }
