@@ -143,4 +143,4 @@ uint8_t ColorTemperatures[][3] {
   {161, 183, 255},
 };
 
-#endif COLOR_TEMPERATURES
+#endif // COLOR_TEMPERATURES

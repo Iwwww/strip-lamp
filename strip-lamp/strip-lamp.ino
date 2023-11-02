@@ -1,112 +1,81 @@
 #include <FastLED.h>
-#include <EncButton2.h>
-
+#include <EncButton.h>
+#include "color_temperatures.h"
 /* === SETUP === */
 #define NUM_LEDS 70
 #define DATA_PIN 4
 
-#define ENC_KEY 12                        // encoder button
 #define ENC_S1 2
 #define ENC_S2 3
 
 /* === SETTINGS === */
 // color temperature
-#define COLOR_SMALL_STEP 1
-#define COLOR_BIG_STEP 5
-#define STARTUP_COLOR_TEMPERATURE 25      // color temperature on startup
+#define COLOR_STEP 1
+#define STARTUP_COLOR_TEMPERATURE 30  // less = warmer
 
 // brightness
 #define BRIGHTNESS_SMALL_STEP 10
-#define BRIGHTNESS_BIG_STEP 50
+#define INITIAL_BRIGHTNESS 100
 #define MAX_BRIGHTNESS 255
-#define MIN_BRIGHTNESS 5
+#define MIN_BRIGHTNESS 2
 
-// sleep timer
-#define SLEEP_MODE_FADE_DELAY 6000       // in milli seconds
-#define BRIGHTNESS_FADE_OUT_STEP 1000     // in milli seconds
-
-// effects
-#define BLINK_BRIGHTNESS_LOWERING 100
-#define BLINK_DELAY 500
-
-EncButton2<EB_BTN> enc(INPUT, 12);
+// Buttons init
+Button black_btn(8);
+Button btn2(7);
+Button btn3(6);
+Button btn4(5);
 
 // encoder reads with table
 long enc_pre_pos = 0;
 long enc_prev_pre_pos = enc_pre_pos;
-long enc_pos = 0;                         // current encoder position
-long enc_prev_pos = enc_pos;              // privious encoder position
+long enc_pos = 0;             // current encoder position
+long enc_prev_pos = enc_pos;  // privious encoder position
 byte lastState = 0;
-bool enc_btn_pressed = 0;
-const int8_t increment[16] = {0, -1, 1, 0, 1, 0, 0, -1, -1, 0, 0, 1, 0, 1, -1, 0};
-
-short n = 0;
-bool btn_state = 0;
+const int8_t increment[16] = { 0, -1, 1, 0, 1, 0, 0, -1, -1, 0, 0, 1, 0, 1, -1, 0 };
 
 int brightness_step = BRIGHTNESS_SMALL_STEP;
-int brightness = MAX_BRIGHTNESS;
+int brightness = INITIAL_BRIGHTNESS;
 CRGB leds[NUM_LEDS];
 
-int8_t color_step = COLOR_SMALL_STEP;
+int8_t color_step = COLOR_STEP;
 int current_temperature = STARTUP_COLOR_TEMPERATURE;
-#include "color_temperatures.h"
 
-// sleep mode
-bool sleepModeOn = 0;
-int fade_out_brightness = brightness;
-// timer
-long sleep_time = 0;
-long fade_time = 0;
+/*  police */
+bool police_switcher = false;
 
 void setup() {
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);  // GRB ordering is assumed
+  FastLED.setBrightness(brightness);
   set_color_temperature(ColorTemperatures[current_temperature]);
   FastLED.show();
+
+  Serial.begin(115200);
+  Serial.println("Serial is runngin");
 }
 
 void loop() {
   enc_tick();
-  enc.tick();
+  black_btn.tick();
+  btn2.tick();
+  btn3.tick();
+  btn4.tick();
 
-  if (enc.click()) set_step(enc.hasClicks());
-
-  if (enc.press()) enc_btn_pressed = true;
-  else if (enc.release()) enc_btn_pressed = false;
-
-  if (!enc_btn_pressed) {
-    if (enc_rot_right()) brightness_up();
-    if (enc_rot_left()) brightness_down();
-  } else {
-    if (enc_rot_right()) color_temperature_prev();
-    if (enc_rot_left()) color_temperature_next();
+  if (enc_rot_right()) {
+    Serial.println("encoder rotation right");
+    brightness_up();
+    color_temperature_next();
+  }
+  if (enc_rot_left()) {
+    Serial.println("encoder rotation left");
+    brightness_down();
+    color_temperature_prev();
   }
 
-  // sleep timer
-  if (enc.hasClicks(2) && sleepModeOn == false) {
-    sleep_time = millis();
-    fade_time = sleep_time;
-    sleepModeOn = true;
-    fade_out_brightness = brightness;
-    blink();
-  }
-  if (sleepModeOn) {
-    // check timer
-    if (millis() - sleep_time >= SLEEP_MODE_FADE_DELAY)
-      if (millis() - fade_time >= BRIGHTNESS_FADE_OUT_STEP) {
-        if (fade_out_brightness > 0)
-          FastLED.setBrightness(--fade_out_brightness);
-        fade_time = millis();
-      }
-    // exit sleep mode
-    if (enc.click() || enc_rot_right() || enc_rot_left()) {
-      sleepModeOn = false;
-      FastLED.setBrightness(brightness);
-      set_color_temperature(ColorTemperatures[current_temperature]);
-    }
-  }
+  uint8_t select_color = (int)(((float)brightness / (float)MAX_BRIGHTNESS) / 5 * COLOR_TEMPERATURE_COUNT);
+  set_color_temperature(
+    ColorTemperatures[select_color]);
 
   FastLED.show();
-
 }
 
 // Encoder
@@ -119,7 +88,7 @@ void enc_tick() {
   }
 
   enc_prev_pre_pos = enc_pre_pos;
-    if (enc_pre_pos % 4 == 0) {
+  if (enc_pre_pos % 4 == 0) {
     enc_pos = enc_pre_pos / 4;
   }
 }
@@ -145,7 +114,7 @@ void fill_led_strip(int tmp[3]) {
   }
 }
 
-// Color temperatur
+// Color temperature
 void set_color_temperature(uint8_t color[3]) {
   for (uint8_t i = 0; i < NUM_LEDS; i++) {
     leds[i].setRGB(color[0], color[1], color[2]);
@@ -179,38 +148,53 @@ void brightness_up() {
       brightness = MAX_BRIGHTNESS;
     }
   FastLED.setBrightness(brightness);
-  
 }
 
 void brightness_down() {
   if (brightness > MIN_BRIGHTNESS)
     if (brightness - brightness_step >= MIN_BRIGHTNESS) {
-        brightness -= brightness_step;
+      brightness -= brightness_step;
     } else {
       brightness = MIN_BRIGHTNESS;
     }
   FastLED.setBrightness(brightness);
-
 }
 
-void set_step(int8_t factor) {
-  if (color_step == COLOR_SMALL_STEP) color_step = COLOR_BIG_STEP;
-  else color_step = COLOR_SMALL_STEP;
-
-  if (brightness_step == BRIGHTNESS_SMALL_STEP) brightness_step = BRIGHTNESS_BIG_STEP;
-  else brightness_step = BRIGHTNESS_SMALL_STEP;
-}
-
-void blink() {
-  if (brightness - 15 > MIN_BRIGHTNESS) {
-    FastLED.setBrightness(brightness - BLINK_BRIGHTNESS_LOWERING);
-    FastLED.show();
-    delay(BLINK_DELAY);
-    FastLED.setBrightness(brightness);
-  } else {
-    FastLED.setBrightness(brightness + BLINK_BRIGHTNESS_LOWERING / 2);
-    FastLED.show();
-    delay(BLINK_DELAY);
-    FastLED.setBrightness(brightness);
+void set_color(uint8_t num_leds_start, uint8_t num_leds_end, uint8_t r, uint8_t g, uint8_t b) {
+  for (uint8_t i = num_leds_start; i < num_leds_end; i++) {
+    leds[i].setRGB(r, g, b);
   }
+}
+
+void blink(uint8_t num_leds_start, uint8_t num_leds_end, uint8_t color[3], uint8_t delay_color, uint8_t delay_dim, uint8_t repeat) {
+  for (uint8_t i = 0; i < repeat; i++) {
+    set_color(num_leds_start, num_leds_end, 0, 0, 0);
+    FastLED.show();
+    delay(delay_dim);
+    set_color(num_leds_start, num_leds_end, color[0], color[1], color[2]);
+    Serial.println("blink");
+    FastLED.show();
+    delay(delay_color);
+  }
+  set_color(num_leds_start, num_leds_end, 0, 0, 0);
+}
+
+void police() {
+  uint8_t color_red[3] = { 255, 0, 0 };
+  uint8_t color_blue[3] = { 0, 0, 255 };
+  uint8_t current_color[3] = { color_red[0], color_red[1], color_red[2] };
+
+  uint8_t num_leds_start = 0;
+  uint8_t num_leds_end = NUM_LEDS / 2;
+
+  if (police_switcher) {
+    current_color[0] = color_blue[0];
+    current_color[1] = color_blue[1];
+    current_color[2] = color_blue[2];
+    num_leds_start = NUM_LEDS / 2;
+    num_leds_end = NUM_LEDS;
+  }
+
+  blink(num_leds_start, num_leds_end, current_color, 100, 30, 4);
+  police_switcher = !police_switcher;
 }
