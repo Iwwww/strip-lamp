@@ -24,6 +24,7 @@ Button black_btn(8);
 Button btn2(7);
 Button btn3(6);
 Button btn4(5);
+Button enc_btn(11);
 
 // encoder reads with table
 long enc_pre_pos = 0;
@@ -40,6 +41,17 @@ CRGB leds[NUM_LEDS];
 int8_t color_step = COLOR_STEP;
 int current_temperature = STARTUP_COLOR_TEMPERATURE;
 
+enum MODE {
+  TEMP_BRIGHTNESS,
+  TEMP,
+  POLICE,
+  SLEEP_TIMER,
+} mode = TEMP_BRIGHTNESS;
+
+bool enc_press_flag = false;
+
+bool sleep_timer_flag = false;
+
 /*  police */
 bool police_switcher = false;
 
@@ -55,25 +67,114 @@ void setup() {
 
 void loop() {
   enc_tick();
+  enc_btn.tick();
   black_btn.tick();
   btn2.tick();
   btn3.tick();
   btn4.tick();
 
-  if (enc_rot_right()) {
-    Serial.println("encoder rotation right");
-    brightness_up();
-    color_temperature_next();
-  }
-  if (enc_rot_left()) {
-    Serial.println("encoder rotation left");
-    brightness_down();
-    color_temperature_prev();
+  if (black_btn.click()) {
+    Serial.println("black btn clicked");
   }
 
-  uint8_t select_color = (int)(((float)brightness / (float)MAX_BRIGHTNESS) / 5 * COLOR_TEMPERATURE_COUNT);
-  set_color_temperature(
-    ColorTemperatures[select_color]);
+  if (btn2.click()) {
+    Serial.println("btn2 btn clicked");
+  }
+
+  if (enc_btn.click()) {
+    Serial.println("enc_tick btn clicked");
+  }
+
+  if (enc_btn.hasClicks(1)) {
+    mode = TEMP_BRIGHTNESS;
+  }
+
+  if (enc_btn.hasClicks(2)) {
+    mode = TEMP;
+  }
+
+  if (enc_btn.hasClicks(3)) {
+    mode = POLICE;
+  }
+
+  if (enc_btn.hasClicks(5)) {
+    mode = SLEEP_TIMER;
+    // sleep_timer();
+  }
+
+  if (enc_btn.holdFor(3000)) {
+    Serial.println("enc_btn holding");
+    if (sleep_timer_flag) {
+      Serial.println("sleep timer disable");
+      sleep_timer_flag = false;
+    }
+    if (mode != TEMP_BRIGHTNESS) {
+      mode = TEMP_BRIGHTNESS;
+      FastLED.setBrightness(brightness);
+      set_color_temperature(ColorTemperatures[current_temperature]);
+    }
+  }
+
+  if (enc_btn.pressing()) {
+    enc_press_flag = true;
+  } else {
+    enc_press_flag = false;
+  }
+
+  switch (mode) {
+    case TEMP_BRIGHTNESS:
+      if (enc_press_flag) {
+        if (enc_rot_right()) {
+          Serial.println("brightness up");
+          color_temperature_next();
+        }
+        if (enc_rot_left()) {
+          Serial.println("brightness down");
+          color_temperature_prev();
+        }
+      } else {
+        if (enc_rot_right()) {
+          Serial.println("encoder rotation right");
+          brightness_up();
+          color_temperature_next();
+        }
+        if (enc_rot_left()) {
+          Serial.println("encoder rotation left");
+          brightness_down();
+          color_temperature_prev();
+        }
+      }
+      break;
+    case TEMP:
+      current_temperature = STARTUP_COLOR_TEMPERATURE;
+      set_color_temperature(ColorTemperatures[current_temperature]);
+      mode = TEMP_BRIGHTNESS;
+      break;
+    case POLICE:
+      police();
+      break;
+    case SLEEP_TIMER:
+      Serial.println("sleep timer");
+      sleep_timer_flag = true;
+      mode = TEMP_BRIGHTNESS;
+      // sleep_timer();
+      break;
+    default:
+      break;
+  }
+
+  // uint8_t select_color = (int)(((float)brightness / (float)MAX_BRIGHTNESS) / 5 * COLOR_TEMPERATURE_COUNT);
+  // set_color_temperature(
+  //   ColorTemperatures[select_color]);
+
+  if (sleep_timer_flag) {
+    if (brightness > 50) {
+      brightness = 50;
+    }
+    brightness_down();
+    color_temperature_prev();
+    // delay(20000);
+  }
 
   FastLED.show();
 }
@@ -172,7 +273,7 @@ void blink(uint8_t num_leds_start, uint8_t num_leds_end, uint8_t color[3], uint8
     FastLED.show();
     delay(delay_dim);
     set_color(num_leds_start, num_leds_end, color[0], color[1], color[2]);
-    Serial.println("blink");
+    // Serial.println("blink");
     FastLED.show();
     delay(delay_color);
   }
@@ -197,4 +298,9 @@ void police() {
 
   blink(num_leds_start, num_leds_end, current_color, 100, 30, 4);
   police_switcher = !police_switcher;
+}
+
+void sleep_timer() {
+  // uint8_t color_orange[3] = { 200, 150, 0 };
+  // blink(0, NUM_LEDS, color_orange, 200, 500, 3);
 }
