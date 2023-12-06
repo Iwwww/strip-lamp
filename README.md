@@ -26,16 +26,6 @@
     #define STARTUP_COLOR_TEMPERATURE 25      // color temperature on startup
     ```
 
-- **Sleep timer**
-
-    Smoothly turns off after a certain time
-
-    ```c 
-    // sleep timer
-    #define SLEEP_MODE_FADE_DELAY 60000        // in milli seconds
-    #define BRIGHTNESS_FADE_OUT_STEP 1000      // in milli seconds
-    ```
-
 # Scheme
 
 ![scheme](schemes/scheme.png)
