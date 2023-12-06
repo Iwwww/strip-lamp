@@ -1,1572 +1,792 @@
 # Algorithm links
 
-https://tannerhelland.com/2012/09/18/convert-temperature-rgb-algorithm-code.html
-https://github.com/neilbartlett/color-temperature/blob/master/index.js
+[How to Convert Temperature (K) to RGB: Algorithm and Sample Code](https://tannerhelland.com/2012/09/18/convert-temperature-rgb-algorithm-code.html)
+
+[RGB t Color Temperature Lib](https://github.com/neilbartlett/color-temperature/blob/master/index.js)
 
 # Convertion table
 
-K    R    G    B  #RRGGBB
-
-1000 255  51   0  #ff3300
-
-1000 255  56   0  #ff3800
-
-1100 255  69   0  #ff4500
-
-1100 255  71   0  #ff4700
-
-1200 255  82   0  #ff5200
-
-1200 255  83   0  #ff5300
-
-1300 255  93   0  #ff5d00
-
-1300 255  93   0  #ff5d00
-
-1400 255 102   0  #ff6600
-
-1400 255 101   0  #ff6500
-
-1500 255 111   0  #ff6f00
-
-1500 255 109   0  #ff6d00
-
-1600 255 118   0  #ff7600
-
-1600 255 115   0  #ff7300
-
-1700 255 124   0  #ff7c00
-
-1700 255 121   0  #ff7900
-
-1800 255 130   0  #ff8200
-
-1800 255 126   0  #ff7e00
-
-1900 255 135   0  #ff8700
-
-1900 255 131   0  #ff8300
-
-2000 255 141  11  #ff8d0b
-
-2000 255 137  18  #ff8912
-
-2100 255 146  29  #ff921d
-
-2100 255 142  33  #ff8e21
-
-2200 255 152  41  #ff9829
-
-2200 255 147  44  #ff932c
-
-2300 255 157  51  #ff9d33
-
-2300 255 152  54  #ff9836
-
-2400 255 162  60  #ffa23c
-
-2400 255 157  63  #ff9d3f
-
-2500 255 166  69  #ffa645
-
-2500 255 161  72  #ffa148
-
-2600 255 170  77  #ffaa4d
-
-2600 255 165  79  #ffa54f
-
-2700 255 174  84  #ffae54
-
-2700 255 169  87  #ffa957
-
-2800 255 178  91  #ffb25b
-
-2800 255 173  94  #ffad5e
-
-2900 255 182  98  #ffb662
-
-2900 255 177 101  #ffb165
-
-3000 255 185 105  #ffb969
-
-3000 255 180 107  #ffb46b
-
-3100 255 189 111  #ffbd6f
-
-3100 255 184 114  #ffb872
-
-3200 255 192 118  #ffc076
-
-3200 255 187 120  #ffbb78
-
-3300 255 195 124  #ffc37c
-
-3300 255 190 126  #ffbe7e
-
-3400 255 198 130  #ffc682
-
-3400 255 193 132  #ffc184
-
-3500 255 201 135  #ffc987
-
-3500 255 196 137  #ffc489
-
-3600 255 203 141  #ffcb8d
-
-3600 255 199 143  #ffc78f
-
-3700 255 206 146  #ffce92
-
-3700 255 201 148  #ffc994
-
-3800 255 208 151  #ffd097
-
-3800 255 204 153  #ffcc99
-
-3900 255 211 156  #ffd39c
-
-3900 255 206 159  #ffce9f
-
-4000 255 213 161  #ffd5a1
-
-4000 255 209 163  #ffd1a3
-
-4100 255 215 166  #ffd7a6
-
-4100 255 211 168  #ffd3a8
-
-4200 255 217 171  #ffd9ab
-
-4200 255 213 173  #ffd5ad
-
-4300 255 219 175  #ffdbaf
-
-4300 255 215 177  #ffd7b1
-
-4400 255 221 180  #ffddb4
-
-4400 255 217 182  #ffd9b6
-
-4500 255 223 184  #ffdfb8
-
-4500 255 219 186  #ffdbba
-
-4600 255 225 188  #ffe1bc
-
-4600 255 221 190  #ffddbe
-
-4700 255 226 192  #ffe2c0
-
-4700 255 223 194  #ffdfc2
-
-4800 255 228 196  #ffe4c4
-
-4800 255 225 198  #ffe1c6
-
-4900 255 229 200  #ffe5c8
-
-4900 255 227 202  #ffe3ca
-
-5000 255 231 204  #ffe7cc
-
-5000 255 228 206  #ffe4ce
-
-5100 255 232 208  #ffe8d0
-
-5100 255 230 210  #ffe6d2
-
-5200 255 234 211  #ffead3
-
-5200 255 232 213  #ffe8d5
-
-5300 255 235 215  #ffebd7
-
-5300 255 233 217  #ffe9d9
-
-5400 255 237 218  #ffedda
-
-5400 255 235 220  #ffebdc
-
-5500 255 238 222  #ffeede
-
-5500 255 236 224  #ffece0
-
-5600 255 239 225  #ffefe1
-
-5600 255 238 227  #ffeee3
-
-5700 255 240 228  #fff0e4
-
-5700 255 239 230  #ffefe6
-
-5800 255 241 231  #fff1e7
-
-5800 255 240 233  #fff0e9
-
-5900 255 243 234  #fff3ea
-
-5900 255 242 236  #fff2ec
-
-6000 255 244 237  #fff4ed
-
-6000 255 243 239  #fff3ef
-
-6100 255 245 240  #fff5f0
-
-6100 255 244 242  #fff4f2
-
-6200 255 246 243  #fff6f3
-
-6200 255 245 245  #fff5f5
-
-6300 255 247 245  #fff7f5
-
-6300 255 246 248  #fff6f8
-
-6400 255 248 248  #fff8f8
-
-6400 255 248 251  #fff8fb
-
-6500 255 249 251  #fff9fb
-
-6500 255 249 253  #fff9fd
-
-6600 255 249 253  #fff9fd
-
-6600 254 249 255  #fef9ff
-
-6700 254 250 255  #fefaff
-
-6700 252 247 255  #fcf7ff
-
-6800 252 248 255  #fcf8ff
-
-6800 249 246 255  #f9f6ff
-
-6900 250 247 255  #faf7ff
-
-6900 247 245 255  #f7f5ff
-
-7000 247 245 255  #f7f5ff
-
-7000 245 243 255  #f5f3ff
-
-7100 245 244 255  #f5f4ff
-
-7100 243 242 255  #f3f2ff
-
-7200 243 243 255  #f3f3ff
-
-7200 240 241 255  #f0f1ff
-
-7300 241 241 255  #f1f1ff
-
-7300 239 240 255  #eff0ff
-
-7400 239 240 255  #eff0ff
-
-7400 237 239 255  #edefff
-
-7500 238 239 255  #eeefff
-
-7500 235 238 255  #ebeeff
-
-7600 236 238 255  #eceeff
-
-7600 233 237 255  #e9edff
-
-7700 234 237 255  #eaedff
-
-7700 231 236 255  #e7ecff
-
-7800 233 236 255  #e9ecff
-
-7800 230 235 255  #e6ebff
-
-7900 231 234 255  #e7eaff
-
-7900 228 234 255  #e4eaff
-
-8000 229 233 255  #e5e9ff
-
-8000 227 233 255  #e3e9ff
-
-8100 228 233 255  #e4e9ff
-
-8100 225 232 255  #e1e8ff
-
-8200 227 232 255  #e3e8ff
-
-8200 224 231 255  #e0e7ff
-
-8300 225 231 255  #e1e7ff
-
-8300 222 230 255  #dee6ff
-
-8400 224 230 255  #e0e6ff
-
-8400 221 230 255  #dde6ff
-
-8500 223 229 255  #dfe5ff
-
-8500 220 229 255  #dce5ff
-
-8600 221 228 255  #dde4ff
-
-8600 218 228 255  #dae4ff
-
-8700 220 227 255  #dce3ff
-
-8700 217 227 255  #d9e3ff
-
-8800 219 226 255  #dbe2ff
-
-8800 216 227 255  #d8e3ff
-
-8900 218 226 255  #dae2ff
-
-8900 215 226 255  #d7e2ff
-
-9000 217 225 255  #d9e1ff
-
-9000 214 225 255  #d6e1ff
-
-9100 216 224 255  #d8e0ff
-
-9100 212 225 255  #d4e1ff
-
-9200 215 223 255  #d7dfff
-
-9200 211 224 255  #d3e0ff
-
-9300 214 223 255  #d6dfff
-
-9300 210 223 255  #d2dfff
-
-9400 213 222 255  #d5deff
-
-9400 209 223 255  #d1dfff
-
-9500 212 221 255  #d4ddff
-
-9500 208 222 255  #d0deff
-
-9600 211 221 255  #d3ddff
-
-9600 207 221 255  #cfddff
-
-9700 210 220 255  #d2dcff
-
-9700 207 221 255  #cfddff
-
-9800 209 220 255  #d1dcff
-
-9800 206 220 255  #cedcff
-
-9900 208 219 255  #d0dbff
-
-9900 205 220 255  #cddcff
-
-10000 207 218 255  #cfdaff
-
-10000 204 219 255  #ccdbff
-
-10100 207 218 255  #cfdaff
-
-10100 203 219 255  #cbdbff
-
-10200 206 217 255  #ced9ff
-
-10200 202 218 255  #cadaff
-
-10300 205 217 255  #cdd9ff
-
-10300 201 218 255  #c9daff
-
-10400 204 216 255  #ccd8ff
-
-10400 201 217 255  #c9d9ff
-
-10500 204 216 255  #ccd8ff
-
-10500 200 217 255  #c8d9ff
-
-10600 203 215 255  #cbd7ff
-
-10600 199 216 255  #c7d8ff
-
-10700 202 215 255  #cad7ff
-
-10700 199 216 255  #c7d8ff
-
-10800 202 214 255  #cad6ff
-
-10800 198 216 255  #c6d8ff
-
-10900 201 214 255  #c9d6ff
-
-10900 197 215 255  #c5d7ff
-
-11000 200 213 255  #c8d5ff
-
-11000 196 215 255  #c4d7ff
-
-11100 200 213 255  #c8d5ff
-
-11100 196 214 255  #c4d6ff
-
-11200 199 212 255  #c7d4ff
-
-11200 195 214 255  #c3d6ff
-
-11300 198 212 255  #c6d4ff
-
-11300 195 214 255  #c3d6ff
-
-11400 198 212 255  #c6d4ff
-
-11400 194 213 255  #c2d5ff
-
-11500 197 211 255  #c5d3ff
-
-11500 193 213 255  #c1d5ff
-
-11600 197 211 255  #c5d3ff
-
-11600 193 212 255  #c1d4ff
-
-11700 196 210 255  #c4d2ff
-
-11700 192 212 255  #c0d4ff
-
-11800 196 210 255  #c4d2ff
-
-11800 192 212 255  #c0d4ff
-
-11900 195 210 255  #c3d2ff
-
-11900 191 211 255  #bfd3ff
-
-12000 195 209 255  #c3d1ff
-
-12000 191 211 255  #bfd3ff
-
-12100 194 209 255  #c2d1ff
-
-12100 190 211 255  #bed3ff
-
-12200 194 208 255  #c2d0ff
-
-12200 190 210 255  #bed2ff
-
-12300 193 208 255  #c1d0ff
-
-12300 189 210 255  #bdd2ff
-
-12400 193 208 255  #c1d0ff
-
-12400 189 210 255  #bdd2ff
-
-12500 192 207 255  #c0cfff
-
-12500 188 210 255  #bcd2ff
-
-12600 192 207 255  #c0cfff
-
-12600 188 209 255  #bcd1ff
-
-12700 191 207 255  #bfcfff
-
-12700 187 209 255  #bbd1ff
-
-12800 191 206 255  #bfceff
-
-12800 187 209 255  #bbd1ff
-
-12900 190 206 255  #beceff
-
-12900 186 208 255  #bad0ff
-
-13000 190 206 255  #beceff
-
-13000 186 208 255  #bad0ff
-
-13100 190 206 255  #beceff
-
-13100 185 208 255  #b9d0ff
-
-13200 189 205 255  #bdcdff
-
-13200 185 208 255  #b9d0ff
-
-13300 189 205 255  #bdcdff
-
-13300 185 207 255  #b9cfff
-
-13400 188 205 255  #bccdff
-
-13400 184 207 255  #b8cfff
-
-13500 188 204 255  #bcccff
-
-13500 184 207 255  #b8cfff
-
-13600 188 204 255  #bcccff
-
-13600 183 207 255  #b7cfff
-
-13700 187 204 255  #bbccff
-
-13700 183 206 255  #b7ceff
-
-13800 187 204 255  #bbccff
-
-13800 183 206 255  #b7ceff
-
-13900 187 203 255  #bbcbff
-
-13900 182 206 255  #b6ceff
-
-14000 186 203 255  #bacbff
-
-14000 182 206 255  #b6ceff
-
-14100 186 203 255  #bacbff
-
-14100 182 205 255  #b6cdff
-
-14200 186 203 255  #bacbff
-
-14200 181 205 255  #b5cdff
-
-14300 185 202 255  #b9caff
-
-14300 181 205 255  #b5cdff
-
-14400 185 202 255  #b9caff
-
-14400 181 205 255  #b5cdff
-
-14500 185 202 255  #b9caff
-
-14500 180 205 255  #b4cdff
-
-14600 184 202 255  #b8caff
-
-14600 180 204 255  #b4ccff
-
-14700 184 201 255  #b8c9ff
-
-14700 180 204 255  #b4ccff
-
-14800 184 201 255  #b8c9ff
-
-14800 179 204 255  #b3ccff
-
-14900 184 201 255  #b8c9ff
-
-14900 179 204 255  #b3ccff
-
-15000 183 201 255  #b7c9ff
-
-15000 179 204 255  #b3ccff
-
-15100 183 201 255  #b7c9ff
-
-15100 178 203 255  #b2cbff
-
-15200 183 200 255  #b7c8ff
-
-15200 178 203 255  #b2cbff
-
-15300 182 200 255  #b6c8ff
-
-15300 178 203 255  #b2cbff
-
-15400 182 200 255  #b6c8ff
-
-15400 178 203 255  #b2cbff
-
-15500 182 200 255  #b6c8ff
-
-15500 177 203 255  #b1cbff
-
-15600 182 200 255  #b6c8ff
-
-15600 177 202 255  #b1caff
-
-15700 181 199 255  #b5c7ff
-
-15700 177 202 255  #b1caff
-
-15800 181 199 255  #b5c7ff
-
-15800 177 202 255  #b1caff
-
-15900 181 199 255  #b5c7ff
-
-15900 176 202 255  #b0caff
-
-16000 181 199 255  #b5c7ff
-
-16000 176 202 255  #b0caff
-
-16100 180 199 255  #b4c7ff
-
-16100 176 202 255  #b0caff
-
-16200 180 198 255  #b4c6ff
-
-16200 175 201 255  #afc9ff
-
-16300 180 198 255  #b4c6ff
-
-16300 175 201 255  #afc9ff
-
-16400 180 198 255  #b4c6ff
-
-16400 175 201 255  #afc9ff
-
-16500 179 198 255  #b3c6ff
-
-16500 175 201 255  #afc9ff
-
-16600 179 198 255  #b3c6ff
-
-16600 175 201 255  #afc9ff
-
-16700 179 198 255  #b3c6ff
-
-16700 174 201 255  #aec9ff
-
-16800 179 197 255  #b3c5ff
-
-16800 174 201 255  #aec9ff
-
-16900 179 197 255  #b3c5ff
-
-16900 174 200 255  #aec8ff
-
-17000 178 197 255  #b2c5ff
-
-17000 174 200 255  #aec8ff
-
-17100 178 197 255  #b2c5ff
-
-17100 173 200 255  #adc8ff
-
-17200 178 197 255  #b2c5ff
-
-17200 173 200 255  #adc8ff
-
-17300 178 197 255  #b2c5ff
-
-17300 173 200 255  #adc8ff
-
-17400 178 196 255  #b2c4ff
-
-17400 173 200 255  #adc8ff
-
-17500 177 196 255  #b1c4ff
-
-17500 173 200 255  #adc8ff
-
-17600 177 196 255  #b1c4ff
-
-17600 172 199 255  #acc7ff
-
-17700 177 196 255  #b1c4ff
-
-17700 172 199 255  #acc7ff
-
-17800 177 196 255  #b1c4ff
-
-17800 172 199 255  #acc7ff
-
-17900 177 196 255  #b1c4ff
-
-17900 172 199 255  #acc7ff
-
-18000 176 196 255  #b0c4ff
-
-18000 172 199 255  #acc7ff
-
-18100 176 195 255  #b0c3ff
-
-18100 171 199 255  #abc7ff
-
-18200 176 195 255  #b0c3ff
-
-18200 171 199 255  #abc7ff
-
-18300 176 195 255  #b0c3ff
-
-18300 171 199 255  #abc7ff
-
-18400 176 195 255  #b0c3ff
-
-18400 171 198 255  #abc6ff
-
-18500 176 195 255  #b0c3ff
-
-18500 171 198 255  #abc6ff
-
-18600 175 195 255  #afc3ff
-
-18600 170 198 255  #aac6ff
-
-18700 175 195 255  #afc3ff
-
-18700 170 198 255  #aac6ff
-
-18800 175 194 255  #afc2ff
-
-18800 170 198 255  #aac6ff
-
-18900 175 194 255  #afc2ff
-
-18900 170 198 255  #aac6ff
-
-19000 175 194 255  #afc2ff
-
-19000 170 198 255  #aac6ff
-
-19100 175 194 255  #afc2ff
-
-19100 170 198 255  #aac6ff
-
-19200 174 194 255  #aec2ff
-
-19200 169 198 255  #a9c6ff
-
-19300 174 194 255  #aec2ff
-
-19300 169 197 255  #a9c5ff
-
-19400 174 194 255  #aec2ff
-
-19400 169 197 255  #a9c5ff
-
-19500 174 194 255  #aec2ff
-
-19500 169 197 255  #a9c5ff
-
-19600 174 194 255  #aec2ff
-
-19600 169 197 255  #a9c5ff
-
-19700 174 193 255  #aec1ff
-
-19700 169 197 255  #a9c5ff
-
-19800 174 193 255  #aec1ff
-
-19800 169 197 255  #a9c5ff
-
-19900 173 193 255  #adc1ff
-
-19900 168 197 255  #a8c5ff
-
-20000 173 193 255  #adc1ff
-
-20000 168 197 255  #a8c5ff
-
-20100 173 193 255  #adc1ff
-
-20100 168 197 255  #a8c5ff
-
-20200 173 193 255  #adc1ff
-
-20200 168 197 255  #a8c5ff
-
-20300 173 193 255  #adc1ff
-
-20300 168 196 255  #a8c4ff
-
-20400 173 193 255  #adc1ff
-
-20400 168 196 255  #a8c4ff
-
-20500 173 193 255  #adc1ff
-
-20500 168 196 255  #a8c4ff
-
-20600 173 192 255  #adc0ff
-
-20600 167 196 255  #a7c4ff
-
-20700 172 192 255  #acc0ff
-
-20700 167 196 255  #a7c4ff
-
-20800 172 192 255  #acc0ff
-
-20800 167 196 255  #a7c4ff
-
-20900 172 192 255  #acc0ff
-
-20900 167 196 255  #a7c4ff
-
-21000 172 192 255  #acc0ff
-
-21000 167 196 255  #a7c4ff
-
-21100 172 192 255  #acc0ff
-
-21100 167 196 255  #a7c4ff
-
-21200 172 192 255  #acc0ff
-
-21200 167 196 255  #a7c4ff
-
-21300 172 192 255  #acc0ff
-
-21300 166 196 255  #a6c4ff
-
-21400 172 192 255  #acc0ff
-
-21400 166 195 255  #a6c3ff
-
-21500 171 192 255  #abc0ff
-
-21500 166 195 255  #a6c3ff
-
-21600 171 192 255  #abc0ff
-
-21600 166 195 255  #a6c3ff
-
-21700 171 191 255  #abbfff
-
-21700 166 195 255  #a6c3ff
-
-21800 171 191 255  #abbfff
-
-21800 166 195 255  #a6c3ff
-
-21900 171 191 255  #abbfff
-
-21900 166 195 255  #a6c3ff
-
-22000 171 191 255  #abbfff
-
-22000 166 195 255  #a6c3ff
-
-22100 171 191 255  #abbfff
-
-22100 165 195 255  #a5c3ff
-
-22200 171 191 255  #abbfff
-
-22200 165 195 255  #a5c3ff
-
-22300 171 191 255  #abbfff
-
-22300 165 195 255  #a5c3ff
-
-22400 170 191 255  #aabfff
-
-22400 165 195 255  #a5c3ff
-
-22500 170 191 255  #aabfff
-
-22500 165 195 255  #a5c3ff
-
-22600 170 191 255  #aabfff
-
-22600 165 195 255  #a5c3ff
-
-22700 170 191 255  #aabfff
-
-22700 165 194 255  #a5c2ff
-
-22800 170 190 255  #aabeff
-
-22800 165 194 255  #a5c2ff
-
-22900 170 190 255  #aabeff
-
-22900 165 194 255  #a5c2ff
-
-23000 170 190 255  #aabeff
-
-23000 164 194 255  #a4c2ff
-
-23100 170 190 255  #aabeff
-
-23100 164 194 255  #a4c2ff
-
-23200 170 190 255  #aabeff
-
-23200 164 194 255  #a4c2ff
-
-23300 170 190 255  #aabeff
-
-23300 164 194 255  #a4c2ff
-
-23400 169 190 255  #a9beff
-
-23400 164 194 255  #a4c2ff
-
-23500 169 190 255  #a9beff
-
-23500 164 194 255  #a4c2ff
-
-23600 169 190 255  #a9beff
-
-23600 164 194 255  #a4c2ff
-
-23700 169 190 255  #a9beff
-
-23700 164 194 255  #a4c2ff
-
-23800 169 190 255  #a9beff
-
-23800 164 194 255  #a4c2ff
-
-23900 169 190 255  #a9beff
-
-23900 164 194 255  #a4c2ff
-
-24000 169 190 255  #a9beff
-
-24000 163 194 255  #a3c2ff
-
-24100 169 190 255  #a9beff
-
-24100 163 194 255  #a3c2ff
-
-24200 169 189 255  #a9bdff
-
-24200 163 193 255  #a3c1ff
-
-24300 169 189 255  #a9bdff
-
-24300 163 193 255  #a3c1ff
-
-24400 169 189 255  #a9bdff
-
-24400 163 193 255  #a3c1ff
-
-24500 168 189 255  #a8bdff
-
-24500 163 193 255  #a3c1ff
-
-24600 168 189 255  #a8bdff
-
-24600 163 193 255  #a3c1ff
-
-24700 168 189 255  #a8bdff
-
-24700 163 193 255  #a3c1ff
-
-24800 168 189 255  #a8bdff
-
-24800 163 193 255  #a3c1ff
-
-24900 168 189 255  #a8bdff
-
-24900 163 193 255  #a3c1ff
-
-25000 168 189 255  #a8bdff
-
-25000 163 193 255  #a3c1ff
-
-25100 168 189 255  #a8bdff
-
-25100 162 193 255  #a2c1ff
-
-25200 168 189 255  #a8bdff
-
-25200 162 193 255  #a2c1ff
-
-25300 168 189 255  #a8bdff
-
-25300 162 193 255  #a2c1ff
-
-25400 168 189 255  #a8bdff
-
-25400 162 193 255  #a2c1ff
-
-25500 168 189 255  #a8bdff
-
-25500 162 193 255  #a2c1ff
-
-25600 168 189 255  #a8bdff
-
-25600 162 193 255  #a2c1ff
-
-25700 167 188 255  #a7bcff
-
-25700 162 193 255  #a2c1ff
-
-25800 167 188 255  #a7bcff
-
-25800 162 193 255  #a2c1ff
-
-25900 167 188 255  #a7bcff
-
-25900 162 192 255  #a2c0ff
-
-26000 167 188 255  #a7bcff
-
-26000 162 192 255  #a2c0ff
-
-26100 167 188 255  #a7bcff
-
-26100 162 192 255  #a2c0ff
-
-26200 167 188 255  #a7bcff
-
-26200 162 192 255  #a2c0ff
-
-26300 167 188 255  #a7bcff
-
-26300 162 192 255  #a2c0ff
-
-26400 167 188 255  #a7bcff
-
-26400 161 192 255  #a1c0ff
-
-26500 167 188 255  #a7bcff
-
-26500 161 192 255  #a1c0ff
-
-26600 167 188 255  #a7bcff
-
-26600 161 192 255  #a1c0ff
-
-26700 167 188 255  #a7bcff
-
-26700 161 192 255  #a1c0ff
-
-26800 167 188 255  #a7bcff
-
-26800 161 192 255  #a1c0ff
-
-26900 167 188 255  #a7bcff
-
-26900 161 192 255  #a1c0ff
-
-27000 167 188 255  #a7bcff
-
-27000 161 192 255  #a1c0ff
-
-27100 166 188 255  #a6bcff
-
-27100 161 192 255  #a1c0ff
-
-27200 166 188 255  #a6bcff
-
-27200 161 192 255  #a1c0ff
-
-27300 166 188 255  #a6bcff
-
-27300 161 192 255  #a1c0ff
-
-27400 166 187 255  #a6bbff
-
-27400 161 192 255  #a1c0ff
-
-27500 166 187 255  #a6bbff
-
-27500 161 192 255  #a1c0ff
-
-27600 166 187 255  #a6bbff
-
-27600 161 192 255  #a1c0ff
-
-27700 166 187 255  #a6bbff
-
-27700 161 192 255  #a1c0ff
-
-27800 166 187 255  #a6bbff
-
-27800 160 192 255  #a0c0ff
-
-27900 166 187 255  #a6bbff
-
-27900 160 192 255  #a0c0ff
-
-28000 166 187 255  #a6bbff
-
-28000 160 191 255  #a0bfff
-
-28100 166 187 255  #a6bbff
-
-28100 160 191 255  #a0bfff
-
-28200 166 187 255  #a6bbff
-
-28200 160 191 255  #a0bfff
-
-28300 166 187 255  #a6bbff
-
-28300 160 191 255  #a0bfff
-
-28400 166 187 255  #a6bbff
-
-28400 160 191 255  #a0bfff
-
-28500 166 187 255  #a6bbff
-
-28500 160 191 255  #a0bfff
-
-28600 166 187 255  #a6bbff
-
-28600 160 191 255  #a0bfff
-
-28700 165 187 255  #a5bbff
-
-28700 160 191 255  #a0bfff
-
-28800 165 187 255  #a5bbff
-
-28800 160 191 255  #a0bfff
-
-28900 165 187 255  #a5bbff
-
-28900 160 191 255  #a0bfff
-
-29000 165 187 255  #a5bbff
-
-29000 160 191 255  #a0bfff
-
-29100 165 187 255  #a5bbff
-
-29100 160 191 255  #a0bfff
-
-29200 165 187 255  #a5bbff
-
-29200 160 191 255  #a0bfff
-
-29300 165 187 255  #a5bbff
-
-29300 159 191 255  #9fbfff
-
-29400 165 187 255  #a5bbff
-
-29400 159 191 255  #9fbfff
-
-29500 165 186 255  #a5baff
-
-29500 159 191 255  #9fbfff
-
-29600 165 186 255  #a5baff
-
-29600 159 191 255  #9fbfff
-
-29700 165 186 255  #a5baff
-
-29700 159 191 255  #9fbfff
-
-29800 165 186 255  #a5baff
-
-29800 159 191 255  #9fbfff
-
-29900 165 186 255  #a5baff
-
-29900 159 191 255  #9fbfff
-
-30000 165 186 255  #a5baff
-
-30000 159 191 255  #9fbfff
-
-30100 165 186 255  #a5baff
-
-30100 159 191 255  #9fbfff
-
-30200 165 186 255  #a5baff
-
-30200 159 191 255  #9fbfff
-
-30300 165 186 255  #a5baff
-
-30300 159 191 255  #9fbfff
-
-30400 165 186 255  #a5baff
-
-30400 159 190 255  #9fbeff
-
-30500 165 186 255  #a5baff
-
-30500 159 190 255  #9fbeff
-
-30600 164 186 255  #a4baff
-
-30600 159 190 255  #9fbeff
-
-30700 164 186 255  #a4baff
-
-30700 159 190 255  #9fbeff
-
-30800 164 186 255  #a4baff
-
-30800 159 190 255  #9fbeff
-
-30900 164 186 255  #a4baff
-
-30900 159 190 255  #9fbeff
-
-31000 164 186 255  #a4baff
-
-31000 159 190 255  #9fbeff
-
-31100 164 186 255  #a4baff
-
-31100 158 190 255  #9ebeff
-
-31200 164 186 255  #a4baff
-
-31200 158 190 255  #9ebeff
-
-31300 164 186 255  #a4baff
-
-31300 158 190 255  #9ebeff
-
-31400 164 186 255  #a4baff
-
-31400 158 190 255  #9ebeff
-
-31500 164 186 255  #a4baff
-
-31500 158 190 255  #9ebeff
-
-31600 164 186 255  #a4baff
-
-31600 158 190 255  #9ebeff
-
-31700 164 186 255  #a4baff
-
-31700 158 190 255  #9ebeff
-
-31800 164 186 255  #a4baff
-
-31800 158 190 255  #9ebeff
-
-31900 164 186 255  #a4baff
-
-31900 158 190 255  #9ebeff
-
-32000 164 185 255  #a4b9ff
-
-32000 158 190 255  #9ebeff
-
-32100 164 185 255  #a4b9ff
-
-32100 158 190 255  #9ebeff
-
-32200 164 185 255  #a4b9ff
-
-32200 158 190 255  #9ebeff
-
-32300 164 185 255  #a4b9ff
-
-32300 158 190 255  #9ebeff
-
-32400 164 185 255  #a4b9ff
-
-32400 158 190 255  #9ebeff
-
-32500 164 185 255  #a4b9ff
-
-32500 158 190 255  #9ebeff
-
-32600 164 185 255  #a4b9ff
-
-32600 158 190 255  #9ebeff
-
-32700 163 185 255  #a3b9ff
-
-32700 158 190 255  #9ebeff
-
-32800 163 185 255  #a3b9ff
-
-32800 158 190 255  #9ebeff
-
-32900 163 185 255  #a3b9ff
-
-32900 158 190 255  #9ebeff
-
-33000 163 185 255  #a3b9ff
-
-33000 158 190 255  #9ebeff
-
-33100 163 185 255  #a3b9ff
-
-33100 158 190 255  #9ebeff
-
-33200 163 185 255  #a3b9ff
-
-33200 157 190 255  #9dbeff
-
-33300 163 185 255  #a3b9ff
-
-33300 157 190 255  #9dbeff
-
-33400 163 185 255  #a3b9ff
-
-33400 157 189 255  #9dbdff
-
-33500 163 185 255  #a3b9ff
-
-33500 157 189 255  #9dbdff
-
-33600 163 185 255  #a3b9ff
-
-33600 157 189 255  #9dbdff
-
-33700 163 185 255  #a3b9ff
-
-33700 157 189 255  #9dbdff
-
-33800 163 185 255  #a3b9ff
-
-33800 157 189 255  #9dbdff
-
-33900 163 185 255  #a3b9ff
-
-33900 157 189 255  #9dbdff
-
-34000 163 185 255  #a3b9ff
-
-34000 157 189 255  #9dbdff
-
-34100 163 185 255  #a3b9ff
-
-34100 157 189 255  #9dbdff
-
-34200 163 185 255  #a3b9ff
-
-34200 157 189 255  #9dbdff
-
-34300 163 185 255  #a3b9ff
-
-34300 157 189 255  #9dbdff
-
-34400 163 185 255  #a3b9ff
-
-34400 157 189 255  #9dbdff
-
-34500 163 185 255  #a3b9ff
-
-34500 157 189 255  #9dbdff
-
-34600 163 185 255  #a3b9ff
-
-34600 157 189 255  #9dbdff
-
-34700 163 185 255  #a3b9ff
-
-34700 157 189 255  #9dbdff
-
-34800 163 185 255  #a3b9ff
-
-34800 157 189 255  #9dbdff
-
-34900 163 185 255  #a3b9ff
-
-34900 157 189 255  #9dbdff
-
-35000 163 184 255  #a3b8ff
-
-35000 157 189 255  #9dbdff
-
-35100 163 184 255  #a3b8ff
-
-35100 157 189 255  #9dbdff
-
-35200 162 184 255  #a2b8ff
-
-35200 157 189 255  #9dbdff
-
-35300 162 184 255  #a2b8ff
-
-35300 157 189 255  #9dbdff
-
-35400 162 184 255  #a2b8ff
-
-35400 157 189 255  #9dbdff
-
-35500 162 184 255  #a2b8ff
-
-35500 157 189 255  #9dbdff
-
-35600 162 184 255  #a2b8ff
-
-35600 156 189 255  #9cbdff
-
-35700 162 184 255  #a2b8ff
-
-35700 156 189 255  #9cbdff
-
-35800 162 184 255  #a2b8ff
-
-35800 156 189 255  #9cbdff
-
-35900 162 184 255  #a2b8ff
-
-35900 156 189 255  #9cbdff
-
-36000 162 184 255  #a2b8ff
-
-36000 156 189 255  #9cbdff
-
-36100 162 184 255  #a2b8ff
-
-36100 156 189 255  #9cbdff
-
-36200 162 184 255  #a2b8ff
-
-36200 156 189 255  #9cbdff
-
-36300 162 184 255  #a2b8ff
-
-36300 156 189 255  #9cbdff
-
-36400 162 184 255  #a2b8ff
-
-36400 156 189 255  #9cbdff
-
-36500 162 184 255  #a2b8ff
-
-36500 156 189 255  #9cbdff
-
-36600 162 184 255  #a2b8ff
-
-36600 156 189 255  #9cbdff
-
-36700 162 184 255  #a2b8ff
-
-36700 156 189 255  #9cbdff
-
-36800 162 184 255  #a2b8ff
-
-36800 156 189 255  #9cbdff
-
-36900 162 184 255  #a2b8ff
-
-36900 156 189 255  #9cbdff
-
-37000 162 184 255  #a2b8ff
-
-37000 156 189 255  #9cbdff
-
-37100 162 184 255  #a2b8ff
-
-37100 156 189 255  #9cbdff
-
-37200 162 184 255  #a2b8ff
-
-37200 156 188 255  #9cbcff
-
-37300 162 184 255  #a2b8ff
-
-37300 156 188 255  #9cbcff
-
-37400 162 184 255  #a2b8ff
-
-37400 156 188 255  #9cbcff
-
-37500 162 184 255  #a2b8ff
-
-37500 156 188 255  #9cbcff
-
-37600 162 184 255  #a2b8ff
-
-37600 156 188 255  #9cbcff
-
-37700 162 184 255  #a2b8ff
-
-37700 156 188 255  #9cbcff
-
-37800 162 184 255  #a2b8ff
-
-37800 156 188 255  #9cbcff
-
-37900 162 184 255  #a2b8ff
-
-37900 156 188 255  #9cbcff
-
-38000 162 184 255  #a2b8ff
-
-38000 156 188 255  #9cbcff
-
-38100 162 184 255  #a2b8ff
-
-38100 156 188 255  #9cbcff
-
-38200 162 184 255  #a2b8ff
-
-38200 156 188 255  #9cbcff
-
-38300 161 184 255  #a1b8ff
-
-38300 156 188 255  #9cbcff
-
-38400 161 184 255  #a1b8ff
-
-38400 155 188 255  #9bbcff
-
-38500 161 184 255  #a1b8ff
-
-38500 155 188 255  #9bbcff
-
-38600 161 183 255  #a1b7ff
-
-38600 155 188 255  #9bbcff
-
-38700 161 183 255  #a1b7ff
-
-38700 155 188 255  #9bbcff
-
-38800 161 183 255  #a1b7ff
-
-38800 155 188 255  #9bbcff
-
-38900 161 183 255  #a1b7ff
-
-38900 155 188 255  #9bbcff
-
-39000 161 183 255  #a1b7ff
-
-39000 155 188 255  #9bbcff
-
-39100 161 183 255  #a1b7ff
-
-39100 155 188 255  #9bbcff
-
-39200 161 183 255  #a1b7ff
-
-39200 155 188 255  #9bbcff
-
-39300 161 183 255  #a1b7ff
-
-39300 155 188 255  #9bbcff
-
-39400 161 183 255  #a1b7ff
-
-39400 155 188 255  #9bbcff
-
-39500 161 183 255  #a1b7ff
-
-39500 155 188 255  #9bbcff
-
-39600 161 183 255  #a1b7ff
-
-39600 155 188 255  #9bbcff
-
-39700 161 183 255  #a1b7ff
-
-39700 155 188 255  #9bbcff
-
-39800 161 183 255  #a1b7ff
-
-39800 155 188 255  #9bbcff
-
-39900 161 183 255  #a1b7ff
-
-39900 155 188 255  #9bbcff
-
-40000 161 183 255  #a1b7ff
-
-40000 155 188 255  #9bbcff
+|   K   |  R  |  G  |  B  |                  #RRGGBB                   |
+| :---: | :-: | :-: | :-: | :----------------------------------------: |
+| 1000  | 255 | 51  |  0  | <span style="color:#ff3300">#ff3300</span> |
+| 1000  | 255 | 56  |  0  | <span style="color:#ff3800">#ff3800</span> |
+| 1100  | 255 | 69  |  0  | <span style="color:#ff4500">#ff4500</span> |
+| 1100  | 255 | 71  |  0  | <span style="color:#ff4700">#ff4700</span> |
+| 1200  | 255 | 82  |  0  | <span style="color:#ff5200">#ff5200</span> |
+| 1200  | 255 | 83  |  0  | <span style="color:#ff5300">#ff5300</span> |
+| 1300  | 255 | 93  |  0  | <span style="color:#ff5d00">#ff5d00</span> |
+| 1300  | 255 | 93  |  0  | <span style="color:#ff5d00">#ff5d00</span> |
+| 1400  | 255 | 102 |  0  | <span style="color:#ff6600">#ff6600</span> |
+| 1400  | 255 | 101 |  0  | <span style="color:#ff6500">#ff6500</span> |
+| 1500  | 255 | 111 |  0  | <span style="color:#ff6f00">#ff6f00</span> |
+| 1500  | 255 | 109 |  0  | <span style="color:#ff6d00">#ff6d00</span> |
+| 1600  | 255 | 118 |  0  | <span style="color:#ff7600">#ff7600</span> |
+| 1600  | 255 | 115 |  0  | <span style="color:#ff7300">#ff7300</span> |
+| 1700  | 255 | 124 |  0  | <span style="color:#ff7c00">#ff7c00</span> |
+| 1700  | 255 | 121 |  0  | <span style="color:#ff7900">#ff7900</span> |
+| 1800  | 255 | 130 |  0  | <span style="color:#ff8200">#ff8200</span> |
+| 1800  | 255 | 126 |  0  | <span style="color:#ff7e00">#ff7e00</span> |
+| 1900  | 255 | 135 |  0  | <span style="color:#ff8700">#ff8700</span> |
+| 1900  | 255 | 131 |  0  | <span style="color:#ff8300">#ff8300</span> |
+| 2000  | 255 | 141 | 11  | <span style="color:#ff8d0b">#ff8d0b</span> |
+| 2000  | 255 | 137 | 18  | <span style="color:#ff8912">#ff8912</span> |
+| 2100  | 255 | 146 | 29  | <span style="color:#ff921d">#ff921d</span> |
+| 2100  | 255 | 142 | 33  | <span style="color:#ff8e21">#ff8e21</span> |
+| 2200  | 255 | 152 | 41  | <span style="color:#ff9829">#ff9829</span> |
+| 2200  | 255 | 147 | 44  | <span style="color:#ff932c">#ff932c</span> |
+| 2300  | 255 | 157 | 51  | <span style="color:#ff9d33">#ff9d33</span> |
+| 2300  | 255 | 152 | 54  | <span style="color:#ff9836">#ff9836</span> |
+| 2400  | 255 | 162 | 60  | <span style="color:#ffa23c">#ffa23c</span> |
+| 2400  | 255 | 157 | 63  | <span style="color:#ff9d3f">#ff9d3f</span> |
+| 2500  | 255 | 166 | 69  | <span style="color:#ffa645">#ffa645</span> |
+| 2500  | 255 | 161 | 72  | <span style="color:#ffa148">#ffa148</span> |
+| 2600  | 255 | 170 | 77  | <span style="color:#ffaa4d">#ffaa4d</span> |
+| 2600  | 255 | 165 | 79  | <span style="color:#ffa54f">#ffa54f</span> |
+| 2700  | 255 | 174 | 84  | <span style="color:#ffae54">#ffae54</span> |
+| 2700  | 255 | 169 | 87  | <span style="color:#ffa957">#ffa957</span> |
+| 2800  | 255 | 178 | 91  | <span style="color:#ffb25b">#ffb25b</span> |
+| 2800  | 255 | 173 | 94  | <span style="color:#ffad5e">#ffad5e</span> |
+| 2900  | 255 | 182 | 98  | <span style="color:#ffb662">#ffb662</span> |
+| 2900  | 255 | 177 | 101 | <span style="color:#ffb165">#ffb165</span> |
+| 3000  | 255 | 185 | 105 | <span style="color:#ffb969">#ffb969</span> |
+| 3000  | 255 | 180 | 107 | <span style="color:#ffb46b">#ffb46b</span> |
+| 3100  | 255 | 189 | 111 | <span style="color:#ffbd6f">#ffbd6f</span> |
+| 3100  | 255 | 184 | 114 | <span style="color:#ffb872">#ffb872</span> |
+| 3200  | 255 | 192 | 118 | <span style="color:#ffc076">#ffc076</span> |
+| 3200  | 255 | 187 | 120 | <span style="color:#ffbb78">#ffbb78</span> |
+| 3300  | 255 | 195 | 124 | <span style="color:#ffc37c">#ffc37c</span> |
+| 3300  | 255 | 190 | 126 | <span style="color:#ffbe7e">#ffbe7e</span> |
+| 3400  | 255 | 198 | 130 | <span style="color:#ffc682">#ffc682</span> |
+| 3400  | 255 | 193 | 132 | <span style="color:#ffc184">#ffc184</span> |
+| 3500  | 255 | 201 | 135 | <span style="color:#ffc987">#ffc987</span> |
+| 3500  | 255 | 196 | 137 | <span style="color:#ffc489">#ffc489</span> |
+| 3600  | 255 | 203 | 141 | <span style="color:#ffcb8d">#ffcb8d</span> |
+| 3600  | 255 | 199 | 143 | <span style="color:#ffc78f">#ffc78f</span> |
+| 3700  | 255 | 206 | 146 | <span style="color:#ffce92">#ffce92</span> |
+| 3700  | 255 | 201 | 148 | <span style="color:#ffc994">#ffc994</span> |
+| 3800  | 255 | 208 | 151 | <span style="color:#ffd097">#ffd097</span> |
+| 3800  | 255 | 204 | 153 | <span style="color:#ffcc99">#ffcc99</span> |
+| 3900  | 255 | 211 | 156 | <span style="color:#ffd39c">#ffd39c</span> |
+| 3900  | 255 | 206 | 159 | <span style="color:#ffce9f">#ffce9f</span> |
+| 4000  | 255 | 213 | 161 | <span style="color:#ffd5a1">#ffd5a1</span> |
+| 4000  | 255 | 209 | 163 | <span style="color:#ffd1a3">#ffd1a3</span> |
+| 4100  | 255 | 215 | 166 | <span style="color:#ffd7a6">#ffd7a6</span> |
+| 4100  | 255 | 211 | 168 | <span style="color:#ffd3a8">#ffd3a8</span> |
+| 4200  | 255 | 217 | 171 | <span style="color:#ffd9ab">#ffd9ab</span> |
+| 4200  | 255 | 213 | 173 | <span style="color:#ffd5ad">#ffd5ad</span> |
+| 4300  | 255 | 219 | 175 | <span style="color:#ffdbaf">#ffdbaf</span> |
+| 4300  | 255 | 215 | 177 | <span style="color:#ffd7b1">#ffd7b1</span> |
+| 4400  | 255 | 221 | 180 | <span style="color:#ffddb4">#ffddb4</span> |
+| 4400  | 255 | 217 | 182 | <span style="color:#ffd9b6">#ffd9b6</span> |
+| 4500  | 255 | 223 | 184 | <span style="color:#ffdfb8">#ffdfb8</span> |
+| 4500  | 255 | 219 | 186 | <span style="color:#ffdbba">#ffdbba</span> |
+| 4600  | 255 | 225 | 188 | <span style="color:#ffe1bc">#ffe1bc</span> |
+| 4600  | 255 | 221 | 190 | <span style="color:#ffddbe">#ffddbe</span> |
+| 4700  | 255 | 226 | 192 | <span style="color:#ffe2c0">#ffe2c0</span> |
+| 4700  | 255 | 223 | 194 | <span style="color:#ffdfc2">#ffdfc2</span> |
+| 4800  | 255 | 228 | 196 | <span style="color:#ffe4c4">#ffe4c4</span> |
+| 4800  | 255 | 225 | 198 | <span style="color:#ffe1c6">#ffe1c6</span> |
+| 4900  | 255 | 229 | 200 | <span style="color:#ffe5c8">#ffe5c8</span> |
+| 4900  | 255 | 227 | 202 | <span style="color:#ffe3ca">#ffe3ca</span> |
+| 5000  | 255 | 231 | 204 | <span style="color:#ffe7cc">#ffe7cc</span> |
+| 5000  | 255 | 228 | 206 | <span style="color:#ffe4ce">#ffe4ce</span> |
+| 5100  | 255 | 232 | 208 | <span style="color:#ffe8d0">#ffe8d0</span> |
+| 5100  | 255 | 230 | 210 | <span style="color:#ffe6d2">#ffe6d2</span> |
+| 5200  | 255 | 234 | 211 | <span style="color:#ffead3">#ffead3</span> |
+| 5200  | 255 | 232 | 213 | <span style="color:#ffe8d5">#ffe8d5</span> |
+| 5300  | 255 | 235 | 215 | <span style="color:#ffebd7">#ffebd7</span> |
+| 5300  | 255 | 233 | 217 | <span style="color:#ffe9d9">#ffe9d9</span> |
+| 5400  | 255 | 237 | 218 | <span style="color:#ffedda">#ffedda</span> |
+| 5400  | 255 | 235 | 220 | <span style="color:#ffebdc">#ffebdc</span> |
+| 5500  | 255 | 238 | 222 | <span style="color:#ffeede">#ffeede</span> |
+| 5500  | 255 | 236 | 224 | <span style="color:#ffece0">#ffece0</span> |
+| 5600  | 255 | 239 | 225 | <span style="color:#ffefe1">#ffefe1</span> |
+| 5600  | 255 | 238 | 227 | <span style="color:#ffeee3">#ffeee3</span> |
+| 5700  | 255 | 240 | 228 | <span style="color:#fff0e4">#fff0e4</span> |
+| 5700  | 255 | 239 | 230 | <span style="color:#ffefe6">#ffefe6</span> |
+| 5800  | 255 | 241 | 231 | <span style="color:#fff1e7">#fff1e7</span> |
+| 5800  | 255 | 240 | 233 | <span style="color:#fff0e9">#fff0e9</span> |
+| 5900  | 255 | 243 | 234 | <span style="color:#fff3ea">#fff3ea</span> |
+| 5900  | 255 | 242 | 236 | <span style="color:#fff2ec">#fff2ec</span> |
+| 6000  | 255 | 244 | 237 | <span style="color:#fff4ed">#fff4ed</span> |
+| 6000  | 255 | 243 | 239 | <span style="color:#fff3ef">#fff3ef</span> |
+| 6100  | 255 | 245 | 240 | <span style="color:#fff5f0">#fff5f0</span> |
+| 6100  | 255 | 244 | 242 | <span style="color:#fff4f2">#fff4f2</span> |
+| 6200  | 255 | 246 | 243 | <span style="color:#fff6f3">#fff6f3</span> |
+| 6200  | 255 | 245 | 245 | <span style="color:#fff5f5">#fff5f5</span> |
+| 6300  | 255 | 247 | 245 | <span style="color:#fff7f5">#fff7f5</span> |
+| 6300  | 255 | 246 | 248 | <span style="color:#fff6f8">#fff6f8</span> |
+| 6400  | 255 | 248 | 248 | <span style="color:#fff8f8">#fff8f8</span> |
+| 6400  | 255 | 248 | 251 | <span style="color:#fff8fb">#fff8fb</span> |
+| 6500  | 255 | 249 | 251 | <span style="color:#fff9fb">#fff9fb</span> |
+| 6500  | 255 | 249 | 253 | <span style="color:#fff9fd">#fff9fd</span> |
+| 6600  | 255 | 249 | 253 | <span style="color:#fff9fd">#fff9fd</span> |
+| 6600  | 254 | 249 | 255 | <span style="color:#fef9ff">#fef9ff</span> |
+| 6700  | 254 | 250 | 255 | <span style="color:#fefaff">#fefaff</span> |
+| 6700  | 252 | 247 | 255 | <span style="color:#fcf7ff">#fcf7ff</span> |
+| 6800  | 252 | 248 | 255 | <span style="color:#fcf8ff">#fcf8ff</span> |
+| 6800  | 249 | 246 | 255 | <span style="color:#f9f6ff">#f9f6ff</span> |
+| 6900  | 250 | 247 | 255 | <span style="color:#faf7ff">#faf7ff</span> |
+| 6900  | 247 | 245 | 255 | <span style="color:#f7f5ff">#f7f5ff</span> |
+| 7000  | 247 | 245 | 255 | <span style="color:#f7f5ff">#f7f5ff</span> |
+| 7000  | 245 | 243 | 255 | <span style="color:#f5f3ff">#f5f3ff</span> |
+| 7100  | 245 | 244 | 255 | <span style="color:#f5f4ff">#f5f4ff</span> |
+| 7100  | 243 | 242 | 255 | <span style="color:#f3f2ff">#f3f2ff</span> |
+| 7200  | 243 | 243 | 255 | <span style="color:#f3f3ff">#f3f3ff</span> |
+| 7200  | 240 | 241 | 255 | <span style="color:#f0f1ff">#f0f1ff</span> |
+| 7300  | 241 | 241 | 255 | <span style="color:#f1f1ff">#f1f1ff</span> |
+| 7300  | 239 | 240 | 255 | <span style="color:#eff0ff">#eff0ff</span> |
+| 7400  | 239 | 240 | 255 | <span style="color:#eff0ff">#eff0ff</span> |
+| 7400  | 237 | 239 | 255 | <span style="color:#edefff">#edefff</span> |
+| 7500  | 238 | 239 | 255 | <span style="color:#eeefff">#eeefff</span> |
+| 7500  | 235 | 238 | 255 | <span style="color:#ebeeff">#ebeeff</span> |
+| 7600  | 236 | 238 | 255 | <span style="color:#eceeff">#eceeff</span> |
+| 7600  | 233 | 237 | 255 | <span style="color:#e9edff">#e9edff</span> |
+| 7700  | 234 | 237 | 255 | <span style="color:#eaedff">#eaedff</span> |
+| 7700  | 231 | 236 | 255 | <span style="color:#e7ecff">#e7ecff</span> |
+| 7800  | 233 | 236 | 255 | <span style="color:#e9ecff">#e9ecff</span> |
+| 7800  | 230 | 235 | 255 | <span style="color:#e6ebff">#e6ebff</span> |
+| 7900  | 231 | 234 | 255 | <span style="color:#e7eaff">#e7eaff</span> |
+| 7900  | 228 | 234 | 255 | <span style="color:#e4eaff">#e4eaff</span> |
+| 8000  | 229 | 233 | 255 | <span style="color:#e5e9ff">#e5e9ff</span> |
+| 8000  | 227 | 233 | 255 | <span style="color:#e3e9ff">#e3e9ff</span> |
+| 8100  | 228 | 233 | 255 | <span style="color:#e4e9ff">#e4e9ff</span> |
+| 8100  | 225 | 232 | 255 | <span style="color:#e1e8ff">#e1e8ff</span> |
+| 8200  | 227 | 232 | 255 | <span style="color:#e3e8ff">#e3e8ff</span> |
+| 8200  | 224 | 231 | 255 | <span style="color:#e0e7ff">#e0e7ff</span> |
+| 8300  | 225 | 231 | 255 | <span style="color:#e1e7ff">#e1e7ff</span> |
+| 8300  | 222 | 230 | 255 | <span style="color:#dee6ff">#dee6ff</span> |
+| 8400  | 224 | 230 | 255 | <span style="color:#e0e6ff">#e0e6ff</span> |
+| 8400  | 221 | 230 | 255 | <span style="color:#dde6ff">#dde6ff</span> |
+| 8500  | 223 | 229 | 255 | <span style="color:#dfe5ff">#dfe5ff</span> |
+| 8500  | 220 | 229 | 255 | <span style="color:#dce5ff">#dce5ff</span> |
+| 8600  | 221 | 228 | 255 | <span style="color:#dde4ff">#dde4ff</span> |
+| 8600  | 218 | 228 | 255 | <span style="color:#dae4ff">#dae4ff</span> |
+| 8700  | 220 | 227 | 255 | <span style="color:#dce3ff">#dce3ff</span> |
+| 8700  | 217 | 227 | 255 | <span style="color:#d9e3ff">#d9e3ff</span> |
+| 8800  | 219 | 226 | 255 | <span style="color:#dbe2ff">#dbe2ff</span> |
+| 8800  | 216 | 227 | 255 | <span style="color:#d8e3ff">#d8e3ff</span> |
+| 8900  | 218 | 226 | 255 | <span style="color:#dae2ff">#dae2ff</span> |
+| 8900  | 215 | 226 | 255 | <span style="color:#d7e2ff">#d7e2ff</span> |
+| 9000  | 217 | 225 | 255 | <span style="color:#d9e1ff">#d9e1ff</span> |
+| 9000  | 214 | 225 | 255 | <span style="color:#d6e1ff">#d6e1ff</span> |
+| 9100  | 216 | 224 | 255 | <span style="color:#d8e0ff">#d8e0ff</span> |
+| 9100  | 212 | 225 | 255 | <span style="color:#d4e1ff">#d4e1ff</span> |
+| 9200  | 215 | 223 | 255 | <span style="color:#d7dfff">#d7dfff</span> |
+| 9200  | 211 | 224 | 255 | <span style="color:#d3e0ff">#d3e0ff</span> |
+| 9300  | 214 | 223 | 255 | <span style="color:#d6dfff">#d6dfff</span> |
+| 9300  | 210 | 223 | 255 | <span style="color:#d2dfff">#d2dfff</span> |
+| 9400  | 213 | 222 | 255 | <span style="color:#d5deff">#d5deff</span> |
+| 9400  | 209 | 223 | 255 | <span style="color:#d1dfff">#d1dfff</span> |
+| 9500  | 212 | 221 | 255 | <span style="color:#d4ddff">#d4ddff</span> |
+| 9500  | 208 | 222 | 255 | <span style="color:#d0deff">#d0deff</span> |
+| 9600  | 211 | 221 | 255 | <span style="color:#d3ddff">#d3ddff</span> |
+| 9600  | 207 | 221 | 255 | <span style="color:#cfddff">#cfddff</span> |
+| 9700  | 210 | 220 | 255 | <span style="color:#d2dcff">#d2dcff</span> |
+| 9700  | 207 | 221 | 255 | <span style="color:#cfddff">#cfddff</span> |
+| 9800  | 209 | 220 | 255 | <span style="color:#d1dcff">#d1dcff</span> |
+| 9800  | 206 | 220 | 255 | <span style="color:#cedcff">#cedcff</span> |
+| 9900  | 208 | 219 | 255 | <span style="color:#d0dbff">#d0dbff</span> |
+| 9900  | 205 | 220 | 255 | <span style="color:#cddcff">#cddcff</span> |
+| 10000 | 207 | 218 | 255 | <span style="color:#cfdaff">#cfdaff</span> |
+| 10000 | 204 | 219 | 255 | <span style="color:#ccdbff">#ccdbff</span> |
+| 10100 | 207 | 218 | 255 | <span style="color:#cfdaff">#cfdaff</span> |
+| 10100 | 203 | 219 | 255 | <span style="color:#cbdbff">#cbdbff</span> |
+| 10200 | 206 | 217 | 255 | <span style="color:#ced9ff">#ced9ff</span> |
+| 10200 | 202 | 218 | 255 | <span style="color:#cadaff">#cadaff</span> |
+| 10300 | 205 | 217 | 255 | <span style="color:#cdd9ff">#cdd9ff</span> |
+| 10300 | 201 | 218 | 255 | <span style="color:#c9daff">#c9daff</span> |
+| 10400 | 204 | 216 | 255 | <span style="color:#ccd8ff">#ccd8ff</span> |
+| 10400 | 201 | 217 | 255 | <span style="color:#c9d9ff">#c9d9ff</span> |
+| 10500 | 204 | 216 | 255 | <span style="color:#ccd8ff">#ccd8ff</span> |
+| 10500 | 200 | 217 | 255 | <span style="color:#c8d9ff">#c8d9ff</span> |
+| 10600 | 203 | 215 | 255 | <span style="color:#cbd7ff">#cbd7ff</span> |
+| 10600 | 199 | 216 | 255 | <span style="color:#c7d8ff">#c7d8ff</span> |
+| 10700 | 202 | 215 | 255 | <span style="color:#cad7ff">#cad7ff</span> |
+| 10700 | 199 | 216 | 255 | <span style="color:#c7d8ff">#c7d8ff</span> |
+| 10800 | 202 | 214 | 255 | <span style="color:#cad6ff">#cad6ff</span> |
+| 10800 | 198 | 216 | 255 | <span style="color:#c6d8ff">#c6d8ff</span> |
+| 10900 | 201 | 214 | 255 | <span style="color:#c9d6ff">#c9d6ff</span> |
+| 10900 | 197 | 215 | 255 | <span style="color:#c5d7ff">#c5d7ff</span> |
+| 11000 | 200 | 213 | 255 | <span style="color:#c8d5ff">#c8d5ff</span> |
+| 11000 | 196 | 215 | 255 | <span style="color:#c4d7ff">#c4d7ff</span> |
+| 11100 | 200 | 213 | 255 | <span style="color:#c8d5ff">#c8d5ff</span> |
+| 11100 | 196 | 214 | 255 | <span style="color:#c4d6ff">#c4d6ff</span> |
+| 11200 | 199 | 212 | 255 | <span style="color:#c7d4ff">#c7d4ff</span> |
+| 11200 | 195 | 214 | 255 | <span style="color:#c3d6ff">#c3d6ff</span> |
+| 11300 | 198 | 212 | 255 | <span style="color:#c6d4ff">#c6d4ff</span> |
+| 11300 | 195 | 214 | 255 | <span style="color:#c3d6ff">#c3d6ff</span> |
+| 11400 | 198 | 212 | 255 | <span style="color:#c6d4ff">#c6d4ff</span> |
+| 11400 | 194 | 213 | 255 | <span style="color:#c2d5ff">#c2d5ff</span> |
+| 11500 | 197 | 211 | 255 | <span style="color:#c5d3ff">#c5d3ff</span> |
+| 11500 | 193 | 213 | 255 | <span style="color:#c1d5ff">#c1d5ff</span> |
+| 11600 | 197 | 211 | 255 | <span style="color:#c5d3ff">#c5d3ff</span> |
+| 11600 | 193 | 212 | 255 | <span style="color:#c1d4ff">#c1d4ff</span> |
+| 11700 | 196 | 210 | 255 | <span style="color:#c4d2ff">#c4d2ff</span> |
+| 11700 | 192 | 212 | 255 | <span style="color:#c0d4ff">#c0d4ff</span> |
+| 11800 | 196 | 210 | 255 | <span style="color:#c4d2ff">#c4d2ff</span> |
+| 11800 | 192 | 212 | 255 | <span style="color:#c0d4ff">#c0d4ff</span> |
+| 11900 | 195 | 210 | 255 | <span style="color:#c3d2ff">#c3d2ff</span> |
+| 11900 | 191 | 211 | 255 | <span style="color:#bfd3ff">#bfd3ff</span> |
+| 12000 | 195 | 209 | 255 | <span style="color:#c3d1ff">#c3d1ff</span> |
+| 12000 | 191 | 211 | 255 | <span style="color:#bfd3ff">#bfd3ff</span> |
+| 12100 | 194 | 209 | 255 | <span style="color:#c2d1ff">#c2d1ff</span> |
+| 12100 | 190 | 211 | 255 | <span style="color:#bed3ff">#bed3ff</span> |
+| 12200 | 194 | 208 | 255 | <span style="color:#c2d0ff">#c2d0ff</span> |
+| 12200 | 190 | 210 | 255 | <span style="color:#bed2ff">#bed2ff</span> |
+| 12300 | 193 | 208 | 255 | <span style="color:#c1d0ff">#c1d0ff</span> |
+| 12300 | 189 | 210 | 255 | <span style="color:#bdd2ff">#bdd2ff</span> |
+| 12400 | 193 | 208 | 255 | <span style="color:#c1d0ff">#c1d0ff</span> |
+| 12400 | 189 | 210 | 255 | <span style="color:#bdd2ff">#bdd2ff</span> |
+| 12500 | 192 | 207 | 255 | <span style="color:#c0cfff">#c0cfff</span> |
+| 12500 | 188 | 210 | 255 | <span style="color:#bcd2ff">#bcd2ff</span> |
+| 12600 | 192 | 207 | 255 | <span style="color:#c0cfff">#c0cfff</span> |
+| 12600 | 188 | 209 | 255 | <span style="color:#bcd1ff">#bcd1ff</span> |
+| 12700 | 191 | 207 | 255 | <span style="color:#bfcfff">#bfcfff</span> |
+| 12700 | 187 | 209 | 255 | <span style="color:#bbd1ff">#bbd1ff</span> |
+| 12800 | 191 | 206 | 255 | <span style="color:#bfceff">#bfceff</span> |
+| 12800 | 187 | 209 | 255 | <span style="color:#bbd1ff">#bbd1ff</span> |
+| 12900 | 190 | 206 | 255 | <span style="color:#beceff">#beceff</span> |
+| 12900 | 186 | 208 | 255 | <span style="color:#bad0ff">#bad0ff</span> |
+| 13000 | 190 | 206 | 255 | <span style="color:#beceff">#beceff</span> |
+| 13000 | 186 | 208 | 255 | <span style="color:#bad0ff">#bad0ff</span> |
+| 13100 | 190 | 206 | 255 | <span style="color:#beceff">#beceff</span> |
+| 13100 | 185 | 208 | 255 | <span style="color:#b9d0ff">#b9d0ff</span> |
+| 13200 | 189 | 205 | 255 | <span style="color:#bdcdff">#bdcdff</span> |
+| 13200 | 185 | 208 | 255 | <span style="color:#b9d0ff">#b9d0ff</span> |
+| 13300 | 189 | 205 | 255 | <span style="color:#bdcdff">#bdcdff</span> |
+| 13300 | 185 | 207 | 255 | <span style="color:#b9cfff">#b9cfff</span> |
+| 13400 | 188 | 205 | 255 | <span style="color:#bccdff">#bccdff</span> |
+| 13400 | 184 | 207 | 255 | <span style="color:#b8cfff">#b8cfff</span> |
+| 13500 | 188 | 204 | 255 | <span style="color:#bcccff">#bcccff</span> |
+| 13500 | 184 | 207 | 255 | <span style="color:#b8cfff">#b8cfff</span> |
+| 13600 | 188 | 204 | 255 | <span style="color:#bcccff">#bcccff</span> |
+| 13600 | 183 | 207 | 255 | <span style="color:#b7cfff">#b7cfff</span> |
+| 13700 | 187 | 204 | 255 | <span style="color:#bbccff">#bbccff</span> |
+| 13700 | 183 | 206 | 255 | <span style="color:#b7ceff">#b7ceff</span> |
+| 13800 | 187 | 204 | 255 | <span style="color:#bbccff">#bbccff</span> |
+| 13800 | 183 | 206 | 255 | <span style="color:#b7ceff">#b7ceff</span> |
+| 13900 | 187 | 203 | 255 | <span style="color:#bbcbff">#bbcbff</span> |
+| 13900 | 182 | 206 | 255 | <span style="color:#b6ceff">#b6ceff</span> |
+| 14000 | 186 | 203 | 255 | <span style="color:#bacbff">#bacbff</span> |
+| 14000 | 182 | 206 | 255 | <span style="color:#b6ceff">#b6ceff</span> |
+| 14100 | 186 | 203 | 255 | <span style="color:#bacbff">#bacbff</span> |
+| 14100 | 182 | 205 | 255 | <span style="color:#b6cdff">#b6cdff</span> |
+| 14200 | 186 | 203 | 255 | <span style="color:#bacbff">#bacbff</span> |
+| 14200 | 181 | 205 | 255 | <span style="color:#b5cdff">#b5cdff</span> |
+| 14300 | 185 | 202 | 255 | <span style="color:#b9caff">#b9caff</span> |
+| 14300 | 181 | 205 | 255 | <span style="color:#b5cdff">#b5cdff</span> |
+| 14400 | 185 | 202 | 255 | <span style="color:#b9caff">#b9caff</span> |
+| 14400 | 181 | 205 | 255 | <span style="color:#b5cdff">#b5cdff</span> |
+| 14500 | 185 | 202 | 255 | <span style="color:#b9caff">#b9caff</span> |
+| 14500 | 180 | 205 | 255 | <span style="color:#b4cdff">#b4cdff</span> |
+| 14600 | 184 | 202 | 255 | <span style="color:#b8caff">#b8caff</span> |
+| 14600 | 180 | 204 | 255 | <span style="color:#b4ccff">#b4ccff</span> |
+| 14700 | 184 | 201 | 255 | <span style="color:#b8c9ff">#b8c9ff</span> |
+| 14700 | 180 | 204 | 255 | <span style="color:#b4ccff">#b4ccff</span> |
+| 14800 | 184 | 201 | 255 | <span style="color:#b8c9ff">#b8c9ff</span> |
+| 14800 | 179 | 204 | 255 | <span style="color:#b3ccff">#b3ccff</span> |
+| 14900 | 184 | 201 | 255 | <span style="color:#b8c9ff">#b8c9ff</span> |
+| 14900 | 179 | 204 | 255 | <span style="color:#b3ccff">#b3ccff</span> |
+| 15000 | 183 | 201 | 255 | <span style="color:#b7c9ff">#b7c9ff</span> |
+| 15000 | 179 | 204 | 255 | <span style="color:#b3ccff">#b3ccff</span> |
+| 15100 | 183 | 201 | 255 | <span style="color:#b7c9ff">#b7c9ff</span> |
+| 15100 | 178 | 203 | 255 | <span style="color:#b2cbff">#b2cbff</span> |
+| 15200 | 183 | 200 | 255 | <span style="color:#b7c8ff">#b7c8ff</span> |
+| 15200 | 178 | 203 | 255 | <span style="color:#b2cbff">#b2cbff</span> |
+| 15300 | 182 | 200 | 255 | <span style="color:#b6c8ff">#b6c8ff</span> |
+| 15300 | 178 | 203 | 255 | <span style="color:#b2cbff">#b2cbff</span> |
+| 15400 | 182 | 200 | 255 | <span style="color:#b6c8ff">#b6c8ff</span> |
+| 15400 | 178 | 203 | 255 | <span style="color:#b2cbff">#b2cbff</span> |
+| 15500 | 182 | 200 | 255 | <span style="color:#b6c8ff">#b6c8ff</span> |
+| 15500 | 177 | 203 | 255 | <span style="color:#b1cbff">#b1cbff</span> |
+| 15600 | 182 | 200 | 255 | <span style="color:#b6c8ff">#b6c8ff</span> |
+| 15600 | 177 | 202 | 255 | <span style="color:#b1caff">#b1caff</span> |
+| 15700 | 181 | 199 | 255 | <span style="color:#b5c7ff">#b5c7ff</span> |
+| 15700 | 177 | 202 | 255 | <span style="color:#b1caff">#b1caff</span> |
+| 15800 | 181 | 199 | 255 | <span style="color:#b5c7ff">#b5c7ff</span> |
+| 15800 | 177 | 202 | 255 | <span style="color:#b1caff">#b1caff</span> |
+| 15900 | 181 | 199 | 255 | <span style="color:#b5c7ff">#b5c7ff</span> |
+| 15900 | 176 | 202 | 255 | <span style="color:#b0caff">#b0caff</span> |
+| 16000 | 181 | 199 | 255 | <span style="color:#b5c7ff">#b5c7ff</span> |
+| 16000 | 176 | 202 | 255 | <span style="color:#b0caff">#b0caff</span> |
+| 16100 | 180 | 199 | 255 | <span style="color:#b4c7ff">#b4c7ff</span> |
+| 16100 | 176 | 202 | 255 | <span style="color:#b0caff">#b0caff</span> |
+| 16200 | 180 | 198 | 255 | <span style="color:#b4c6ff">#b4c6ff</span> |
+| 16200 | 175 | 201 | 255 | <span style="color:#afc9ff">#afc9ff</span> |
+| 16300 | 180 | 198 | 255 | <span style="color:#b4c6ff">#b4c6ff</span> |
+| 16300 | 175 | 201 | 255 | <span style="color:#afc9ff">#afc9ff</span> |
+| 16400 | 180 | 198 | 255 | <span style="color:#b4c6ff">#b4c6ff</span> |
+| 16400 | 175 | 201 | 255 | <span style="color:#afc9ff">#afc9ff</span> |
+| 16500 | 179 | 198 | 255 | <span style="color:#b3c6ff">#b3c6ff</span> |
+| 16500 | 175 | 201 | 255 | <span style="color:#afc9ff">#afc9ff</span> |
+| 16600 | 179 | 198 | 255 | <span style="color:#b3c6ff">#b3c6ff</span> |
+| 16600 | 175 | 201 | 255 | <span style="color:#afc9ff">#afc9ff</span> |
+| 16700 | 179 | 198 | 255 | <span style="color:#b3c6ff">#b3c6ff</span> |
+| 16700 | 174 | 201 | 255 | <span style="color:#aec9ff">#aec9ff</span> |
+| 16800 | 179 | 197 | 255 | <span style="color:#b3c5ff">#b3c5ff</span> |
+| 16800 | 174 | 201 | 255 | <span style="color:#aec9ff">#aec9ff</span> |
+| 16900 | 179 | 197 | 255 | <span style="color:#b3c5ff">#b3c5ff</span> |
+| 16900 | 174 | 200 | 255 | <span style="color:#aec8ff">#aec8ff</span> |
+| 17000 | 178 | 197 | 255 | <span style="color:#b2c5ff">#b2c5ff</span> |
+| 17000 | 174 | 200 | 255 | <span style="color:#aec8ff">#aec8ff</span> |
+| 17100 | 178 | 197 | 255 | <span style="color:#b2c5ff">#b2c5ff</span> |
+| 17100 | 173 | 200 | 255 | <span style="color:#adc8ff">#adc8ff</span> |
+| 17200 | 178 | 197 | 255 | <span style="color:#b2c5ff">#b2c5ff</span> |
+| 17200 | 173 | 200 | 255 | <span style="color:#adc8ff">#adc8ff</span> |
+| 17300 | 178 | 197 | 255 | <span style="color:#b2c5ff">#b2c5ff</span> |
+| 17300 | 173 | 200 | 255 | <span style="color:#adc8ff">#adc8ff</span> |
+| 17400 | 178 | 196 | 255 | <span style="color:#b2c4ff">#b2c4ff</span> |
+| 17400 | 173 | 200 | 255 | <span style="color:#adc8ff">#adc8ff</span> |
+| 17500 | 177 | 196 | 255 | <span style="color:#b1c4ff">#b1c4ff</span> |
+| 17500 | 173 | 200 | 255 | <span style="color:#adc8ff">#adc8ff</span> |
+| 17600 | 177 | 196 | 255 | <span style="color:#b1c4ff">#b1c4ff</span> |
+| 17600 | 172 | 199 | 255 | <span style="color:#acc7ff">#acc7ff</span> |
+| 17700 | 177 | 196 | 255 | <span style="color:#b1c4ff">#b1c4ff</span> |
+| 17700 | 172 | 199 | 255 | <span style="color:#acc7ff">#acc7ff</span> |
+| 17800 | 177 | 196 | 255 | <span style="color:#b1c4ff">#b1c4ff</span> |
+| 17800 | 172 | 199 | 255 | <span style="color:#acc7ff">#acc7ff</span> |
+| 17900 | 177 | 196 | 255 | <span style="color:#b1c4ff">#b1c4ff</span> |
+| 17900 | 172 | 199 | 255 | <span style="color:#acc7ff">#acc7ff</span> |
+| 18000 | 176 | 196 | 255 | <span style="color:#b0c4ff">#b0c4ff</span> |
+| 18000 | 172 | 199 | 255 | <span style="color:#acc7ff">#acc7ff</span> |
+| 18100 | 176 | 195 | 255 | <span style="color:#b0c3ff">#b0c3ff</span> |
+| 18100 | 171 | 199 | 255 | <span style="color:#abc7ff">#abc7ff</span> |
+| 18200 | 176 | 195 | 255 | <span style="color:#b0c3ff">#b0c3ff</span> |
+| 18200 | 171 | 199 | 255 | <span style="color:#abc7ff">#abc7ff</span> |
+| 18300 | 176 | 195 | 255 | <span style="color:#b0c3ff">#b0c3ff</span> |
+| 18300 | 171 | 199 | 255 | <span style="color:#abc7ff">#abc7ff</span> |
+| 18400 | 176 | 195 | 255 | <span style="color:#b0c3ff">#b0c3ff</span> |
+| 18400 | 171 | 198 | 255 | <span style="color:#abc6ff">#abc6ff</span> |
+| 18500 | 176 | 195 | 255 | <span style="color:#b0c3ff">#b0c3ff</span> |
+| 18500 | 171 | 198 | 255 | <span style="color:#abc6ff">#abc6ff</span> |
+| 18600 | 175 | 195 | 255 | <span style="color:#afc3ff">#afc3ff</span> |
+| 18600 | 170 | 198 | 255 | <span style="color:#aac6ff">#aac6ff</span> |
+| 18700 | 175 | 195 | 255 | <span style="color:#afc3ff">#afc3ff</span> |
+| 18700 | 170 | 198 | 255 | <span style="color:#aac6ff">#aac6ff</span> |
+| 18800 | 175 | 194 | 255 | <span style="color:#afc2ff">#afc2ff</span> |
+| 18800 | 170 | 198 | 255 | <span style="color:#aac6ff">#aac6ff</span> |
+| 18900 | 175 | 194 | 255 | <span style="color:#afc2ff">#afc2ff</span> |
+| 18900 | 170 | 198 | 255 | <span style="color:#aac6ff">#aac6ff</span> |
+| 19000 | 175 | 194 | 255 | <span style="color:#afc2ff">#afc2ff</span> |
+| 19000 | 170 | 198 | 255 | <span style="color:#aac6ff">#aac6ff</span> |
+| 19100 | 175 | 194 | 255 | <span style="color:#afc2ff">#afc2ff</span> |
+| 19100 | 170 | 198 | 255 | <span style="color:#aac6ff">#aac6ff</span> |
+| 19200 | 174 | 194 | 255 | <span style="color:#aec2ff">#aec2ff</span> |
+| 19200 | 169 | 198 | 255 | <span style="color:#a9c6ff">#a9c6ff</span> |
+| 19300 | 174 | 194 | 255 | <span style="color:#aec2ff">#aec2ff</span> |
+| 19300 | 169 | 197 | 255 | <span style="color:#a9c5ff">#a9c5ff</span> |
+| 19400 | 174 | 194 | 255 | <span style="color:#aec2ff">#aec2ff</span> |
+| 19400 | 169 | 197 | 255 | <span style="color:#a9c5ff">#a9c5ff</span> |
+| 19500 | 174 | 194 | 255 | <span style="color:#aec2ff">#aec2ff</span> |
+| 19500 | 169 | 197 | 255 | <span style="color:#a9c5ff">#a9c5ff</span> |
+| 19600 | 174 | 194 | 255 | <span style="color:#aec2ff">#aec2ff</span> |
+| 19600 | 169 | 197 | 255 | <span style="color:#a9c5ff">#a9c5ff</span> |
+| 19700 | 174 | 193 | 255 | <span style="color:#aec1ff">#aec1ff</span> |
+| 19700 | 169 | 197 | 255 | <span style="color:#a9c5ff">#a9c5ff</span> |
+| 19800 | 174 | 193 | 255 | <span style="color:#aec1ff">#aec1ff</span> |
+| 19800 | 169 | 197 | 255 | <span style="color:#a9c5ff">#a9c5ff</span> |
+| 19900 | 173 | 193 | 255 | <span style="color:#adc1ff">#adc1ff</span> |
+| 19900 | 168 | 197 | 255 | <span style="color:#a8c5ff">#a8c5ff</span> |
+| 20000 | 173 | 193 | 255 | <span style="color:#adc1ff">#adc1ff</span> |
+| 20000 | 168 | 197 | 255 | <span style="color:#a8c5ff">#a8c5ff</span> |
+| 20100 | 173 | 193 | 255 | <span style="color:#adc1ff">#adc1ff</span> |
+| 20100 | 168 | 197 | 255 | <span style="color:#a8c5ff">#a8c5ff</span> |
+| 20200 | 173 | 193 | 255 | <span style="color:#adc1ff">#adc1ff</span> |
+| 20200 | 168 | 197 | 255 | <span style="color:#a8c5ff">#a8c5ff</span> |
+| 20300 | 173 | 193 | 255 | <span style="color:#adc1ff">#adc1ff</span> |
+| 20300 | 168 | 196 | 255 | <span style="color:#a8c4ff">#a8c4ff</span> |
+| 20400 | 173 | 193 | 255 | <span style="color:#adc1ff">#adc1ff</span> |
+| 20400 | 168 | 196 | 255 | <span style="color:#a8c4ff">#a8c4ff</span> |
+| 20500 | 173 | 193 | 255 | <span style="color:#adc1ff">#adc1ff</span> |
+| 20500 | 168 | 196 | 255 | <span style="color:#a8c4ff">#a8c4ff</span> |
+| 20600 | 173 | 192 | 255 | <span style="color:#adc0ff">#adc0ff</span> |
+| 20600 | 167 | 196 | 255 | <span style="color:#a7c4ff">#a7c4ff</span> |
+| 20700 | 172 | 192 | 255 | <span style="color:#acc0ff">#acc0ff</span> |
+| 20700 | 167 | 196 | 255 | <span style="color:#a7c4ff">#a7c4ff</span> |
+| 20800 | 172 | 192 | 255 | <span style="color:#acc0ff">#acc0ff</span> |
+| 20800 | 167 | 196 | 255 | <span style="color:#a7c4ff">#a7c4ff</span> |
+| 20900 | 172 | 192 | 255 | <span style="color:#acc0ff">#acc0ff</span> |
+| 20900 | 167 | 196 | 255 | <span style="color:#a7c4ff">#a7c4ff</span> |
+| 21000 | 172 | 192 | 255 | <span style="color:#acc0ff">#acc0ff</span> |
+| 21000 | 167 | 196 | 255 | <span style="color:#a7c4ff">#a7c4ff</span> |
+| 21100 | 172 | 192 | 255 | <span style="color:#acc0ff">#acc0ff</span> |
+| 21100 | 167 | 196 | 255 | <span style="color:#a7c4ff">#a7c4ff</span> |
+| 21200 | 172 | 192 | 255 | <span style="color:#acc0ff">#acc0ff</span> |
+| 21200 | 167 | 196 | 255 | <span style="color:#a7c4ff">#a7c4ff</span> |
+| 21300 | 172 | 192 | 255 | <span style="color:#acc0ff">#acc0ff</span> |
+| 21300 | 166 | 196 | 255 | <span style="color:#a6c4ff">#a6c4ff</span> |
+| 21400 | 172 | 192 | 255 | <span style="color:#acc0ff">#acc0ff</span> |
+| 21400 | 166 | 195 | 255 | <span style="color:#a6c3ff">#a6c3ff</span> |
+| 21500 | 171 | 192 | 255 | <span style="color:#abc0ff">#abc0ff</span> |
+| 21500 | 166 | 195 | 255 | <span style="color:#a6c3ff">#a6c3ff</span> |
+| 21600 | 171 | 192 | 255 | <span style="color:#abc0ff">#abc0ff</span> |
+| 21600 | 166 | 195 | 255 | <span style="color:#a6c3ff">#a6c3ff</span> |
+| 21700 | 171 | 191 | 255 | <span style="color:#abbfff">#abbfff</span> |
+| 21700 | 166 | 195 | 255 | <span style="color:#a6c3ff">#a6c3ff</span> |
+| 21800 | 171 | 191 | 255 | <span style="color:#abbfff">#abbfff</span> |
+| 21800 | 166 | 195 | 255 | <span style="color:#a6c3ff">#a6c3ff</span> |
+| 21900 | 171 | 191 | 255 | <span style="color:#abbfff">#abbfff</span> |
+| 21900 | 166 | 195 | 255 | <span style="color:#a6c3ff">#a6c3ff</span> |
+| 22000 | 171 | 191 | 255 | <span style="color:#abbfff">#abbfff</span> |
+| 22000 | 166 | 195 | 255 | <span style="color:#a6c3ff">#a6c3ff</span> |
+| 22100 | 171 | 191 | 255 | <span style="color:#abbfff">#abbfff</span> |
+| 22100 | 165 | 195 | 255 | <span style="color:#a5c3ff">#a5c3ff</span> |
+| 22200 | 171 | 191 | 255 | <span style="color:#abbfff">#abbfff</span> |
+| 22200 | 165 | 195 | 255 | <span style="color:#a5c3ff">#a5c3ff</span> |
+| 22300 | 171 | 191 | 255 | <span style="color:#abbfff">#abbfff</span> |
+| 22300 | 165 | 195 | 255 | <span style="color:#a5c3ff">#a5c3ff</span> |
+| 22400 | 170 | 191 | 255 | <span style="color:#aabfff">#aabfff</span> |
+| 22400 | 165 | 195 | 255 | <span style="color:#a5c3ff">#a5c3ff</span> |
+| 22500 | 170 | 191 | 255 | <span style="color:#aabfff">#aabfff</span> |
+| 22500 | 165 | 195 | 255 | <span style="color:#a5c3ff">#a5c3ff</span> |
+| 22600 | 170 | 191 | 255 | <span style="color:#aabfff">#aabfff</span> |
+| 22600 | 165 | 195 | 255 | <span style="color:#a5c3ff">#a5c3ff</span> |
+| 22700 | 170 | 191 | 255 | <span style="color:#aabfff">#aabfff</span> |
+| 22700 | 165 | 194 | 255 | <span style="color:#a5c2ff">#a5c2ff</span> |
+| 22800 | 170 | 190 | 255 | <span style="color:#aabeff">#aabeff</span> |
+| 22800 | 165 | 194 | 255 | <span style="color:#a5c2ff">#a5c2ff</span> |
+| 22900 | 170 | 190 | 255 | <span style="color:#aabeff">#aabeff</span> |
+| 22900 | 165 | 194 | 255 | <span style="color:#a5c2ff">#a5c2ff</span> |
+| 23000 | 170 | 190 | 255 | <span style="color:#aabeff">#aabeff</span> |
+| 23000 | 164 | 194 | 255 | <span style="color:#a4c2ff">#a4c2ff</span> |
+| 23100 | 170 | 190 | 255 | <span style="color:#aabeff">#aabeff</span> |
+| 23100 | 164 | 194 | 255 | <span style="color:#a4c2ff">#a4c2ff</span> |
+| 23200 | 170 | 190 | 255 | <span style="color:#aabeff">#aabeff</span> |
+| 23200 | 164 | 194 | 255 | <span style="color:#a4c2ff">#a4c2ff</span> |
+| 23300 | 170 | 190 | 255 | <span style="color:#aabeff">#aabeff</span> |
+| 23300 | 164 | 194 | 255 | <span style="color:#a4c2ff">#a4c2ff</span> |
+| 23400 | 169 | 190 | 255 | <span style="color:#a9beff">#a9beff</span> |
+| 23400 | 164 | 194 | 255 | <span style="color:#a4c2ff">#a4c2ff</span> |
+| 23500 | 169 | 190 | 255 | <span style="color:#a9beff">#a9beff</span> |
+| 23500 | 164 | 194 | 255 | <span style="color:#a4c2ff">#a4c2ff</span> |
+| 23600 | 169 | 190 | 255 | <span style="color:#a9beff">#a9beff</span> |
+| 23600 | 164 | 194 | 255 | <span style="color:#a4c2ff">#a4c2ff</span> |
+| 23700 | 169 | 190 | 255 | <span style="color:#a9beff">#a9beff</span> |
+| 23700 | 164 | 194 | 255 | <span style="color:#a4c2ff">#a4c2ff</span> |
+| 23800 | 169 | 190 | 255 | <span style="color:#a9beff">#a9beff</span> |
+| 23800 | 164 | 194 | 255 | <span style="color:#a4c2ff">#a4c2ff</span> |
+| 23900 | 169 | 190 | 255 | <span style="color:#a9beff">#a9beff</span> |
+| 23900 | 164 | 194 | 255 | <span style="color:#a4c2ff">#a4c2ff</span> |
+| 24000 | 169 | 190 | 255 | <span style="color:#a9beff">#a9beff</span> |
+| 24000 | 163 | 194 | 255 | <span style="color:#a3c2ff">#a3c2ff</span> |
+| 24100 | 169 | 190 | 255 | <span style="color:#a9beff">#a9beff</span> |
+| 24100 | 163 | 194 | 255 | <span style="color:#a3c2ff">#a3c2ff</span> |
+| 24200 | 169 | 189 | 255 | <span style="color:#a9bdff">#a9bdff</span> |
+| 24200 | 163 | 193 | 255 | <span style="color:#a3c1ff">#a3c1ff</span> |
+| 24300 | 169 | 189 | 255 | <span style="color:#a9bdff">#a9bdff</span> |
+| 24300 | 163 | 193 | 255 | <span style="color:#a3c1ff">#a3c1ff</span> |
+| 24400 | 169 | 189 | 255 | <span style="color:#a9bdff">#a9bdff</span> |
+| 24400 | 163 | 193 | 255 | <span style="color:#a3c1ff">#a3c1ff</span> |
+| 24500 | 168 | 189 | 255 | <span style="color:#a8bdff">#a8bdff</span> |
+| 24500 | 163 | 193 | 255 | <span style="color:#a3c1ff">#a3c1ff</span> |
+| 24600 | 168 | 189 | 255 | <span style="color:#a8bdff">#a8bdff</span> |
+| 24600 | 163 | 193 | 255 | <span style="color:#a3c1ff">#a3c1ff</span> |
+| 24700 | 168 | 189 | 255 | <span style="color:#a8bdff">#a8bdff</span> |
+| 24700 | 163 | 193 | 255 | <span style="color:#a3c1ff">#a3c1ff</span> |
+| 24800 | 168 | 189 | 255 | <span style="color:#a8bdff">#a8bdff</span> |
+| 24800 | 163 | 193 | 255 | <span style="color:#a3c1ff">#a3c1ff</span> |
+| 24900 | 168 | 189 | 255 | <span style="color:#a8bdff">#a8bdff</span> |
+| 24900 | 163 | 193 | 255 | <span style="color:#a3c1ff">#a3c1ff</span> |
+| 25000 | 168 | 189 | 255 | <span style="color:#a8bdff">#a8bdff</span> |
+| 25000 | 163 | 193 | 255 | <span style="color:#a3c1ff">#a3c1ff</span> |
+| 25100 | 168 | 189 | 255 | <span style="color:#a8bdff">#a8bdff</span> |
+| 25100 | 162 | 193 | 255 | <span style="color:#a2c1ff">#a2c1ff</span> |
+| 25200 | 168 | 189 | 255 | <span style="color:#a8bdff">#a8bdff</span> |
+| 25200 | 162 | 193 | 255 | <span style="color:#a2c1ff">#a2c1ff</span> |
+| 25300 | 168 | 189 | 255 | <span style="color:#a8bdff">#a8bdff</span> |
+| 25300 | 162 | 193 | 255 | <span style="color:#a2c1ff">#a2c1ff</span> |
+| 25400 | 168 | 189 | 255 | <span style="color:#a8bdff">#a8bdff</span> |
+| 25400 | 162 | 193 | 255 | <span style="color:#a2c1ff">#a2c1ff</span> |
+| 25500 | 168 | 189 | 255 | <span style="color:#a8bdff">#a8bdff</span> |
+| 25500 | 162 | 193 | 255 | <span style="color:#a2c1ff">#a2c1ff</span> |
+| 25600 | 168 | 189 | 255 | <span style="color:#a8bdff">#a8bdff</span> |
+| 25600 | 162 | 193 | 255 | <span style="color:#a2c1ff">#a2c1ff</span> |
+| 25700 | 167 | 188 | 255 | <span style="color:#a7bcff">#a7bcff</span> |
+| 25700 | 162 | 193 | 255 | <span style="color:#a2c1ff">#a2c1ff</span> |
+| 25800 | 167 | 188 | 255 | <span style="color:#a7bcff">#a7bcff</span> |
+| 25800 | 162 | 193 | 255 | <span style="color:#a2c1ff">#a2c1ff</span> |
+| 25900 | 167 | 188 | 255 | <span style="color:#a7bcff">#a7bcff</span> |
+| 25900 | 162 | 192 | 255 | <span style="color:#a2c0ff">#a2c0ff</span> |
+| 26000 | 167 | 188 | 255 | <span style="color:#a7bcff">#a7bcff</span> |
+| 26000 | 162 | 192 | 255 | <span style="color:#a2c0ff">#a2c0ff</span> |
+| 26100 | 167 | 188 | 255 | <span style="color:#a7bcff">#a7bcff</span> |
+| 26100 | 162 | 192 | 255 | <span style="color:#a2c0ff">#a2c0ff</span> |
+| 26200 | 167 | 188 | 255 | <span style="color:#a7bcff">#a7bcff</span> |
+| 26200 | 162 | 192 | 255 | <span style="color:#a2c0ff">#a2c0ff</span> |
+| 26300 | 167 | 188 | 255 | <span style="color:#a7bcff">#a7bcff</span> |
+| 26300 | 162 | 192 | 255 | <span style="color:#a2c0ff">#a2c0ff</span> |
+| 26400 | 167 | 188 | 255 | <span style="color:#a7bcff">#a7bcff</span> |
+| 26400 | 161 | 192 | 255 | <span style="color:#a1c0ff">#a1c0ff</span> |
+| 26500 | 167 | 188 | 255 | <span style="color:#a7bcff">#a7bcff</span> |
+| 26500 | 161 | 192 | 255 | <span style="color:#a1c0ff">#a1c0ff</span> |
+| 26600 | 167 | 188 | 255 | <span style="color:#a7bcff">#a7bcff</span> |
+| 26600 | 161 | 192 | 255 | <span style="color:#a1c0ff">#a1c0ff</span> |
+| 26700 | 167 | 188 | 255 | <span style="color:#a7bcff">#a7bcff</span> |
+| 26700 | 161 | 192 | 255 | <span style="color:#a1c0ff">#a1c0ff</span> |
+| 26800 | 167 | 188 | 255 | <span style="color:#a7bcff">#a7bcff</span> |
+| 26800 | 161 | 192 | 255 | <span style="color:#a1c0ff">#a1c0ff</span> |
+| 26900 | 167 | 188 | 255 | <span style="color:#a7bcff">#a7bcff</span> |
+| 26900 | 161 | 192 | 255 | <span style="color:#a1c0ff">#a1c0ff</span> |
+| 27000 | 167 | 188 | 255 | <span style="color:#a7bcff">#a7bcff</span> |
+| 27000 | 161 | 192 | 255 | <span style="color:#a1c0ff">#a1c0ff</span> |
+| 27100 | 166 | 188 | 255 | <span style="color:#a6bcff">#a6bcff</span> |
+| 27100 | 161 | 192 | 255 | <span style="color:#a1c0ff">#a1c0ff</span> |
+| 27200 | 166 | 188 | 255 | <span style="color:#a6bcff">#a6bcff</span> |
+| 27200 | 161 | 192 | 255 | <span style="color:#a1c0ff">#a1c0ff</span> |
+| 27300 | 166 | 188 | 255 | <span style="color:#a6bcff">#a6bcff</span> |
+| 27300 | 161 | 192 | 255 | <span style="color:#a1c0ff">#a1c0ff</span> |
+| 27400 | 166 | 187 | 255 | <span style="color:#a6bbff">#a6bbff</span> |
+| 27400 | 161 | 192 | 255 | <span style="color:#a1c0ff">#a1c0ff</span> |
+| 27500 | 166 | 187 | 255 | <span style="color:#a6bbff">#a6bbff</span> |
+| 27500 | 161 | 192 | 255 | <span style="color:#a1c0ff">#a1c0ff</span> |
+| 27600 | 166 | 187 | 255 | <span style="color:#a6bbff">#a6bbff</span> |
+| 27600 | 161 | 192 | 255 | <span style="color:#a1c0ff">#a1c0ff</span> |
+| 27700 | 166 | 187 | 255 | <span style="color:#a6bbff">#a6bbff</span> |
+| 27700 | 161 | 192 | 255 | <span style="color:#a1c0ff">#a1c0ff</span> |
+| 27800 | 166 | 187 | 255 | <span style="color:#a6bbff">#a6bbff</span> |
+| 27800 | 160 | 192 | 255 | <span style="color:#a0c0ff">#a0c0ff</span> |
+| 27900 | 166 | 187 | 255 | <span style="color:#a6bbff">#a6bbff</span> |
+| 27900 | 160 | 192 | 255 | <span style="color:#a0c0ff">#a0c0ff</span> |
+| 28000 | 166 | 187 | 255 | <span style="color:#a6bbff">#a6bbff</span> |
+| 28000 | 160 | 191 | 255 | <span style="color:#a0bfff">#a0bfff</span> |
+| 28100 | 166 | 187 | 255 | <span style="color:#a6bbff">#a6bbff</span> |
+| 28100 | 160 | 191 | 255 | <span style="color:#a0bfff">#a0bfff</span> |
+| 28200 | 166 | 187 | 255 | <span style="color:#a6bbff">#a6bbff</span> |
+| 28200 | 160 | 191 | 255 | <span style="color:#a0bfff">#a0bfff</span> |
+| 28300 | 166 | 187 | 255 | <span style="color:#a6bbff">#a6bbff</span> |
+| 28300 | 160 | 191 | 255 | <span style="color:#a0bfff">#a0bfff</span> |
+| 28400 | 166 | 187 | 255 | <span style="color:#a6bbff">#a6bbff</span> |
+| 28400 | 160 | 191 | 255 | <span style="color:#a0bfff">#a0bfff</span> |
+| 28500 | 166 | 187 | 255 | <span style="color:#a6bbff">#a6bbff</span> |
+| 28500 | 160 | 191 | 255 | <span style="color:#a0bfff">#a0bfff</span> |
+| 28600 | 166 | 187 | 255 | <span style="color:#a6bbff">#a6bbff</span> |
+| 28600 | 160 | 191 | 255 | <span style="color:#a0bfff">#a0bfff</span> |
+| 28700 | 165 | 187 | 255 | <span style="color:#a5bbff">#a5bbff</span> |
+| 28700 | 160 | 191 | 255 | <span style="color:#a0bfff">#a0bfff</span> |
+| 28800 | 165 | 187 | 255 | <span style="color:#a5bbff">#a5bbff</span> |
+| 28800 | 160 | 191 | 255 | <span style="color:#a0bfff">#a0bfff</span> |
+| 28900 | 165 | 187 | 255 | <span style="color:#a5bbff">#a5bbff</span> |
+| 28900 | 160 | 191 | 255 | <span style="color:#a0bfff">#a0bfff</span> |
+| 29000 | 165 | 187 | 255 | <span style="color:#a5bbff">#a5bbff</span> |
+| 29000 | 160 | 191 | 255 | <span style="color:#a0bfff">#a0bfff</span> |
+| 29100 | 165 | 187 | 255 | <span style="color:#a5bbff">#a5bbff</span> |
+| 29100 | 160 | 191 | 255 | <span style="color:#a0bfff">#a0bfff</span> |
+| 29200 | 165 | 187 | 255 | <span style="color:#a5bbff">#a5bbff</span> |
+| 29200 | 160 | 191 | 255 | <span style="color:#a0bfff">#a0bfff</span> |
+| 29300 | 165 | 187 | 255 | <span style="color:#a5bbff">#a5bbff</span> |
+| 29300 | 159 | 191 | 255 | <span style="color:#9fbfff">#9fbfff</span> |
+| 29400 | 165 | 187 | 255 | <span style="color:#a5bbff">#a5bbff</span> |
+| 29400 | 159 | 191 | 255 | <span style="color:#9fbfff">#9fbfff</span> |
+| 29500 | 165 | 186 | 255 | <span style="color:#a5baff">#a5baff</span> |
+| 29500 | 159 | 191 | 255 | <span style="color:#9fbfff">#9fbfff</span> |
+| 29600 | 165 | 186 | 255 | <span style="color:#a5baff">#a5baff</span> |
+| 29600 | 159 | 191 | 255 | <span style="color:#9fbfff">#9fbfff</span> |
+| 29700 | 165 | 186 | 255 | <span style="color:#a5baff">#a5baff</span> |
+| 29700 | 159 | 191 | 255 | <span style="color:#9fbfff">#9fbfff</span> |
+| 29800 | 165 | 186 | 255 | <span style="color:#a5baff">#a5baff</span> |
+| 29800 | 159 | 191 | 255 | <span style="color:#9fbfff">#9fbfff</span> |
+| 29900 | 165 | 186 | 255 | <span style="color:#a5baff">#a5baff</span> |
+| 29900 | 159 | 191 | 255 | <span style="color:#9fbfff">#9fbfff</span> |
+| 30000 | 165 | 186 | 255 | <span style="color:#a5baff">#a5baff</span> |
+| 30000 | 159 | 191 | 255 | <span style="color:#9fbfff">#9fbfff</span> |
+| 30100 | 165 | 186 | 255 | <span style="color:#a5baff">#a5baff</span> |
+| 30100 | 159 | 191 | 255 | <span style="color:#9fbfff">#9fbfff</span> |
+| 30200 | 165 | 186 | 255 | <span style="color:#a5baff">#a5baff</span> |
+| 30200 | 159 | 191 | 255 | <span style="color:#9fbfff">#9fbfff</span> |
+| 30300 | 165 | 186 | 255 | <span style="color:#a5baff">#a5baff</span> |
+| 30300 | 159 | 191 | 255 | <span style="color:#9fbfff">#9fbfff</span> |
+| 30400 | 165 | 186 | 255 | <span style="color:#a5baff">#a5baff</span> |
+| 30400 | 159 | 190 | 255 | <span style="color:#9fbeff">#9fbeff</span> |
+| 30500 | 165 | 186 | 255 | <span style="color:#a5baff">#a5baff</span> |
+| 30500 | 159 | 190 | 255 | <span style="color:#9fbeff">#9fbeff</span> |
+| 30600 | 164 | 186 | 255 | <span style="color:#a4baff">#a4baff</span> |
+| 30600 | 159 | 190 | 255 | <span style="color:#9fbeff">#9fbeff</span> |
+| 30700 | 164 | 186 | 255 | <span style="color:#a4baff">#a4baff</span> |
+| 30700 | 159 | 190 | 255 | <span style="color:#9fbeff">#9fbeff</span> |
+| 30800 | 164 | 186 | 255 | <span style="color:#a4baff">#a4baff</span> |
+| 30800 | 159 | 190 | 255 | <span style="color:#9fbeff">#9fbeff</span> |
+| 30900 | 164 | 186 | 255 | <span style="color:#a4baff">#a4baff</span> |
+| 30900 | 159 | 190 | 255 | <span style="color:#9fbeff">#9fbeff</span> |
+| 31000 | 164 | 186 | 255 | <span style="color:#a4baff">#a4baff</span> |
+| 31000 | 159 | 190 | 255 | <span style="color:#9fbeff">#9fbeff</span> |
+| 31100 | 164 | 186 | 255 | <span style="color:#a4baff">#a4baff</span> |
+| 31100 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 31200 | 164 | 186 | 255 | <span style="color:#a4baff">#a4baff</span> |
+| 31200 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 31300 | 164 | 186 | 255 | <span style="color:#a4baff">#a4baff</span> |
+| 31300 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 31400 | 164 | 186 | 255 | <span style="color:#a4baff">#a4baff</span> |
+| 31400 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 31500 | 164 | 186 | 255 | <span style="color:#a4baff">#a4baff</span> |
+| 31500 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 31600 | 164 | 186 | 255 | <span style="color:#a4baff">#a4baff</span> |
+| 31600 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 31700 | 164 | 186 | 255 | <span style="color:#a4baff">#a4baff</span> |
+| 31700 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 31800 | 164 | 186 | 255 | <span style="color:#a4baff">#a4baff</span> |
+| 31800 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 31900 | 164 | 186 | 255 | <span style="color:#a4baff">#a4baff</span> |
+| 31900 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 32000 | 164 | 185 | 255 | <span style="color:#a4b9ff">#a4b9ff</span> |
+| 32000 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 32100 | 164 | 185 | 255 | <span style="color:#a4b9ff">#a4b9ff</span> |
+| 32100 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 32200 | 164 | 185 | 255 | <span style="color:#a4b9ff">#a4b9ff</span> |
+| 32200 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 32300 | 164 | 185 | 255 | <span style="color:#a4b9ff">#a4b9ff</span> |
+| 32300 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 32400 | 164 | 185 | 255 | <span style="color:#a4b9ff">#a4b9ff</span> |
+| 32400 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 32500 | 164 | 185 | 255 | <span style="color:#a4b9ff">#a4b9ff</span> |
+| 32500 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 32600 | 164 | 185 | 255 | <span style="color:#a4b9ff">#a4b9ff</span> |
+| 32600 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 32700 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 32700 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 32800 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 32800 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 32900 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 32900 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 33000 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 33000 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 33100 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 33100 | 158 | 190 | 255 | <span style="color:#9ebeff">#9ebeff</span> |
+| 33200 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 33200 | 157 | 190 | 255 | <span style="color:#9dbeff">#9dbeff</span> |
+| 33300 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 33300 | 157 | 190 | 255 | <span style="color:#9dbeff">#9dbeff</span> |
+| 33400 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 33400 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 33500 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 33500 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 33600 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 33600 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 33700 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 33700 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 33800 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 33800 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 33900 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 33900 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 34000 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 34000 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 34100 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 34100 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 34200 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 34200 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 34300 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 34300 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 34400 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 34400 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 34500 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 34500 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 34600 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 34600 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 34700 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 34700 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 34800 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 34800 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 34900 | 163 | 185 | 255 | <span style="color:#a3b9ff">#a3b9ff</span> |
+| 34900 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 35000 | 163 | 184 | 255 | <span style="color:#a3b8ff">#a3b8ff</span> |
+| 35000 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 35100 | 163 | 184 | 255 | <span style="color:#a3b8ff">#a3b8ff</span> |
+| 35100 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 35200 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 35200 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 35300 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 35300 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 35400 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 35400 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 35500 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 35500 | 157 | 189 | 255 | <span style="color:#9dbdff">#9dbdff</span> |
+| 35600 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 35600 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 35700 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 35700 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 35800 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 35800 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 35900 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 35900 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 36000 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 36000 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 36100 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 36100 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 36200 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 36200 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 36300 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 36300 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 36400 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 36400 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 36500 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 36500 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 36600 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 36600 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 36700 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 36700 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 36800 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 36800 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 36900 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 36900 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 37000 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 37000 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 37100 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 37100 | 156 | 189 | 255 | <span style="color:#9cbdff">#9cbdff</span> |
+| 37200 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 37200 | 156 | 188 | 255 | <span style="color:#9cbcff">#9cbcff</span> |
+| 37300 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 37300 | 156 | 188 | 255 | <span style="color:#9cbcff">#9cbcff</span> |
+| 37400 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 37400 | 156 | 188 | 255 | <span style="color:#9cbcff">#9cbcff</span> |
+| 37500 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 37500 | 156 | 188 | 255 | <span style="color:#9cbcff">#9cbcff</span> |
+| 37600 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 37600 | 156 | 188 | 255 | <span style="color:#9cbcff">#9cbcff</span> |
+| 37700 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 37700 | 156 | 188 | 255 | <span style="color:#9cbcff">#9cbcff</span> |
+| 37800 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 37800 | 156 | 188 | 255 | <span style="color:#9cbcff">#9cbcff</span> |
+| 37900 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 37900 | 156 | 188 | 255 | <span style="color:#9cbcff">#9cbcff</span> |
+| 38000 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 38000 | 156 | 188 | 255 | <span style="color:#9cbcff">#9cbcff</span> |
+| 38100 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 38100 | 156 | 188 | 255 | <span style="color:#9cbcff">#9cbcff</span> |
+| 38200 | 162 | 184 | 255 | <span style="color:#a2b8ff">#a2b8ff</span> |
+| 38200 | 156 | 188 | 255 | <span style="color:#9cbcff">#9cbcff</span> |
+| 38300 | 161 | 184 | 255 | <span style="color:#a1b8ff">#a1b8ff</span> |
+| 38300 | 156 | 188 | 255 | <span style="color:#9cbcff">#9cbcff</span> |
+| 38400 | 161 | 184 | 255 | <span style="color:#a1b8ff">#a1b8ff</span> |
+| 38400 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 38500 | 161 | 184 | 255 | <span style="color:#a1b8ff">#a1b8ff</span> |
+| 38500 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 38600 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 38600 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 38700 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 38700 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 38800 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 38800 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 38900 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 38900 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 39000 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 39000 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 39100 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 39100 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 39200 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 39200 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 39300 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 39300 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 39400 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 39400 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 39500 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 39500 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 39600 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 39600 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 39700 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 39700 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 39800 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 39800 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 39900 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 39900 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
+| 40000 | 161 | 183 | 255 | <span style="color:#a1b7ff">#a1b7ff</span> |
+| 40000 | 155 | 188 | 255 | <span style="color:#9bbcff">#9bbcff</span> |
