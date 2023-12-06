@@ -1,6 +1,7 @@
 #include <FastLED.h>
 #include <EncButton.h>
 #include "color_temperatures.h"
+#include "colors.h"
 /* === SETUP === */
 #define NUM_LEDS 70
 #define DATA_PIN 4
@@ -45,12 +46,14 @@ enum MODE {
   TEMP_BRIGHTNESS,
   TEMP,
   POLICE,
-  SLEEP_TIMER,
+  COLOR,
+  // SLEEP_TIMER,
 } mode = TEMP_BRIGHTNESS;
 
 bool enc_press_flag = false;
 
 bool sleep_timer_flag = false;
+int current_color_num = STARTUP_COLOR_TEMPERATURE;
 
 /*  police */
 bool police_switcher = false;
@@ -97,10 +100,15 @@ void loop() {
     mode = POLICE;
   }
 
-  if (enc_btn.hasClicks(5)) {
-    mode = SLEEP_TIMER;
-    // sleep_timer();
+  if (enc_btn.hasClicks(4)) {
+    mode = COLOR;
+    color_next();
   }
+
+  // if (enc_btn.hasClicks(5)) {
+  //   mode = SLEEP_TIMER;
+  //   sleep_timer();
+  // }
 
   if (enc_btn.holdFor(3000)) {
     Serial.println("enc_btn holding");
@@ -153,12 +161,32 @@ void loop() {
     case POLICE:
       police();
       break;
-    case SLEEP_TIMER:
-      Serial.println("sleep timer");
-      sleep_timer_flag = true;
-      mode = TEMP_BRIGHTNESS;
-      // sleep_timer();
-      break;
+    case COLOR:
+      if (enc_press_flag) {
+        if (enc_rot_right()) {
+          Serial.println("COLOR brightness: encoder rotation right");
+          brightness_up();
+        }
+        if (enc_rot_left()) {
+          Serial.println("COLOR brightness: encoder rotation left");
+          brightness_down();
+        }
+      } else {
+        if (enc_rot_right()) {
+          Serial.println("COLOR: encoder rotation right");
+          color_next();
+        }
+        if (enc_rot_left()) {
+          Serial.println("COLOR: encoder rotation left");
+          color_prev();
+        }
+      }
+    // case SLEEP_TIMER:
+    //   Serial.println("sleep timer");
+    //   // sleep_timer_flag = true;
+    //   mode = TEMP_BRIGHTNESS;
+    //   // sleep_timer();
+    //   break;
     default:
       break;
   }
@@ -300,7 +328,25 @@ void police() {
   police_switcher = !police_switcher;
 }
 
-void sleep_timer() {
+// void sleep_timer() {
   // uint8_t color_orange[3] = { 200, 150, 0 };
   // blink(0, NUM_LEDS, color_orange, 200, 500, 3);
+// }
+
+void color_next() {
+  if (current_color_num + 1 < COLOR_COUNT) {
+    current_color_num++;
+  } else if (current_color_num + 1 >= COLOR_COUNT) {
+    current_color_num = COLOR_COUNT;
+  }
+  set_color_temperature(Colors[current_color_num]);
+}
+
+void color_prev() {
+  if (current_color_num - 1 > 0) {
+    current_color_num -= color_step;
+  } else if (current_color_num - color_step <= 0) {
+    current_color_num = 0;
+  }
+  set_color_temperature(Colors[current_color_num]);
 }
